@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.triggle{
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+}
+.triggle:hover{
+    color: #1890ff;
+}
+
+/*美化webkit内核滚动条*/
+  ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+  }
+::-webkit-scrollbar-thumb {
+    background-color: #777;
+}
