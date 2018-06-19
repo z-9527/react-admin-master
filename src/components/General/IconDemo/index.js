@@ -29,7 +29,7 @@ class IconDemo extends React.Component {
   render() {
     return (
       <div>
-        <CustomBreadcrumb first='UI' last='图标'/>
+        <CustomBreadcrumb first='基本' last='图标'/>
         <Card hoverable bordered={false} style={{marginBottom: 15}} title='如何使用' id='howUse'>
           使用 <Icon/> 标签声明组件，指定图标对应的 type 属性。
         </Card>

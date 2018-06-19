@@ -48,15 +48,6 @@ class SpinDemo extends React.Component {
               <Spin/>&emsp;
               <Spin indicator={<Icon type='loading'/>}/>
             </Card>
-          </Col>
-          <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
-              <Spin size='small'/>&emsp;
-              <Spin/>&emsp;
-              <Spin size='large'/>
-            </Card>
-          </Col>
-          <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
               <Spin tip="Loading...">
                 <Alert
@@ -66,8 +57,17 @@ class SpinDemo extends React.Component {
                 />
               </Spin>
             </Card>
+            <Card bordered={false} style={styles.colItem}>
+              <Button onClick={this.NProgressStart} loading={loading2}>页面顶部进度条加载</Button>&emsp;
+              <Button onClick={this.NProgressDone}>顶部进度条加载完成</Button>
+            </Card>
           </Col>
           <Col span={12}>
+            <Card bordered={false} style={styles.colItem}>
+              <Spin size='small'/>&emsp;
+              <Spin/>&emsp;
+              <Spin size='large'/>
+            </Card>
             <Card bordered={false} style={styles.colItem}>
               <div style={{marginBottom: '1em'}}>
                 <Spin tip="Loading..." spinning={this.state.loading}>
@@ -81,12 +81,6 @@ class SpinDemo extends React.Component {
               Loading state：<Switch onChange={(checked) => this.setState({loading: checked})}/>
             </Card>
           </Col>
-          <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
-              <Button onClick={this.NProgressStart} loading={loading2}>页面顶部进度条加载</Button>&emsp;
-              <Button onClick={this.NProgressDone}>顶部进度条加载完成</Button>
-            </Card>
-          </Col>
         </Row>
       </div>
     )
@@ -96,7 +90,7 @@ class SpinDemo extends React.Component {
 const styles = {
   colItem: {
     borderRadius: 3,
-    margin: '5px 0'
+    margin: '10px 0'
   }
 }
 

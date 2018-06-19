@@ -23,7 +23,7 @@ class MenuDemo extends React.Component {
   render() {
     return (
       <div>
-        <CustomBreadcrumb first='UI' last='导航菜单'/>
+        <CustomBreadcrumb first='导航' last='导航菜单'/>
         <Card title='何时使用' hoverable style={{marginBottom: 5}}>
           导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
         </Card>
@@ -54,29 +54,6 @@ class MenuDemo extends React.Component {
                 </Col>
               </Row>
             </Card>
-          </Col>
-          <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
-              <Menu mode="horizontal">
-                <Menu.SubMenu key='mail' title={<span><Icon type='mail'/><span>Navigation One</span></span>}>
-                  <Menu.Item>subItem1</Menu.Item>
-                  <Menu.Item>subItem2</Menu.Item>
-                  <Menu.Item>subItem3</Menu.Item>
-                  <Menu.Item>subItem4</Menu.Item>
-                </Menu.SubMenu>
-                <Menu.Item key="app" disabled><Icon type="appstore"/>Navigation Two</Menu.Item>
-                <Menu.SubMenu key='set' title={<span><Icon type='setting'/><span>Navigation Three</span></span>}>
-                  <Menu.Item>subItem1</Menu.Item>
-                  <Menu.Item>subItem2</Menu.Item>
-                  <Menu.Item>subItem3</Menu.Item>
-                  <Menu.Item>subItem4</Menu.Item>
-                </Menu.SubMenu>
-              </Menu>
-            </Card>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
               <Row>
                 <Col span={12}>
@@ -108,6 +85,23 @@ class MenuDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
+            <Card bordered={false} style={styles.Item}>
+              <Menu mode="horizontal">
+                <Menu.SubMenu key='mail' title={<span><Icon type='mail'/><span>Navigation One</span></span>}>
+                  <Menu.Item>subItem1</Menu.Item>
+                  <Menu.Item>subItem2</Menu.Item>
+                  <Menu.Item>subItem3</Menu.Item>
+                  <Menu.Item>subItem4</Menu.Item>
+                </Menu.SubMenu>
+                <Menu.Item key="app" disabled><Icon type="appstore"/>Navigation Two</Menu.Item>
+                <Menu.SubMenu key='set' title={<span><Icon type='setting'/><span>Navigation Three</span></span>}>
+                  <Menu.Item>subItem1</Menu.Item>
+                  <Menu.Item>subItem2</Menu.Item>
+                  <Menu.Item>subItem3</Menu.Item>
+                  <Menu.Item>subItem4</Menu.Item>
+                </Menu.SubMenu>
+              </Menu>
+            </Card>
             <Card bordered={false} style={styles.colItem}>
               <p style={{paddingLeft: 15}}>
                 <Switch size='small' onChange={this.changeMode}/> Change Mode &emsp;
@@ -146,7 +140,12 @@ class MenuDemo extends React.Component {
 const styles = {
   colItem: {
     borderRadius: 3,
-    margin: '5px 0'
+    margin: '10px 0'
+  },
+  Item:{
+    height:190,
+    margin: '10px 0',
+    borderRadius: 3,
   }
 }
 

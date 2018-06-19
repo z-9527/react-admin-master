@@ -5,7 +5,7 @@ import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
 
 class ButtonDemo extends React.Component {
   state = {
-    size: 'small'
+    size: 'default'
   }
   handleSizeChange = (e) => {
     this.setState({
@@ -30,7 +30,7 @@ class ButtonDemo extends React.Component {
     );
     return (
       <div>
-        <CustomBreadcrumb first='UI' last='按钮'/>
+        <CustomBreadcrumb first='基本' last='按钮'/>
         <Card hoverable bordered={false} style={{marginBottom: 5}} title='何时使用'>
           标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
         </Card>
@@ -42,24 +42,6 @@ class ButtonDemo extends React.Component {
               <Button type="dashed">Dashed</Button>&emsp;
               <Button type="danger">Danger</Button>
             </Card>
-          </Col>
-          <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
-              <p>
-                <Button type="primary" shape="circle" icon="search"/>&emsp;
-                <Button type="primary" icon="search">Search</Button>&emsp;
-                <Button shape="circle" icon="search"/>&emsp;
-                <Button icon="search">Search</Button>&emsp;
-              </p>
-              <p style={{marginBottom: 0}}>
-                <Button shape="circle" icon="search"/>&emsp;
-                <Button icon="search">Search</Button>&emsp;
-                <Button type="dashed" shape="circle" icon="search"/>&emsp;
-                <Button type="dashed" icon="search">Search</Button>
-              </p>
-            </Card>
-          </Col>
-          <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
               <Radio.Group value={this.state.size} onChange={this.handleSizeChange}>
                 <Radio.Button value="large">Large</Radio.Button>
@@ -86,14 +68,26 @@ class ButtonDemo extends React.Component {
           </Col>
           <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
+              <p>
+                <Button type="primary" shape="circle" icon="search"/>&emsp;
+                <Button type="primary" icon="search">Search</Button>&emsp;
+                <Button shape="circle" icon="search"/>&emsp;
+                <Button icon="search">Search</Button>&emsp;
+              </p>
+              <p style={{marginBottom: 0}}>
+                <Button shape="circle" icon="search"/>&emsp;
+                <Button icon="search">Search</Button>&emsp;
+                <Button type="dashed" shape="circle" icon="search"/>&emsp;
+                <Button type="dashed" icon="search">Search</Button>
+              </p>
+            </Card>
+            <Card bordered={false} style={styles.colItem}>
               <Button type="primary">primary</Button>&emsp;
               <Button>secondary</Button>&emsp;
               <Dropdown overlay={menu}>
                 <Button>Button<Icon type='down'/></Button>
               </Dropdown>
             </Card>
-          </Col>
-          <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
               <p>
                 <Button loading type='primary'>Loading</Button>&emsp;
@@ -115,7 +109,7 @@ class ButtonDemo extends React.Component {
 const styles = {
   colItem: {
     borderRadius: 3,
-    margin: '5px 0'
+    margin: '10px 0'
   }
 }
 
