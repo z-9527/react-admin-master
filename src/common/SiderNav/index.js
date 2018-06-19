@@ -89,7 +89,7 @@ class SiderNav extends React.Component {
     // 防止页面刷新出现问题
     const pathname = this.props.location.pathname
     let openKeys = []
-    //如果当前路由是二级目录，则要展开两个subMenu（一个父级，一个子级）
+    //如果当前路由是3级目录，则要展开两个subMenu（一个父级，一个子级）
     if (pathname.split('/').length === 5) {
       const arr = pathname.split('/')
       openKeys = [arr.slice(0,3).join('/'), arr.slice(0,4).join('/')]
@@ -126,7 +126,7 @@ class SiderNav extends React.Component {
     const latestOpenKey = openKeys[openKeys.length - 1]
     //判断最新展开的菜单是不是父级菜单，若是父级菜单就只展开一个，不是父级菜单就展开父级菜单和当前子菜单
     //因为我的子菜单的key包含了父级菜单，所以不用像官网的例子单独定义父级菜单数组，然后比较当前菜单在不在父级菜单数组里面。
-    //只适用于2级菜单
+    //只适用于3级菜单
     if (latestOpenKey.includes(openKeys[0])) {
       this.setState({
         openKeys
