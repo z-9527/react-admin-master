@@ -19,7 +19,7 @@ class CustomMenu extends React.Component {
       <Menu.SubMenu key={key} title={<span>{icon && <Icon type={icon}/>}<span>{title}</span></span>}>
         {
           subs && subs.map(item => {
-            return this.renderMenuItem(item)
+            return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
           })
         }
       </Menu.SubMenu>

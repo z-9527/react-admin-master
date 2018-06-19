@@ -32,7 +32,7 @@ class DropdownDemo extends React.Component {
     )
     return (
       <div>
-        <CustomBreadcrumb first='UI' last='下拉菜单'/>
+        <CustomBreadcrumb first='导航' last='下拉菜单'/>
         <Card title='何时使用' hoverable style={{marginBottom: 5}}>
           当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。
         </Card>
@@ -43,14 +43,6 @@ class DropdownDemo extends React.Component {
               <Dropdown overlay={menu}><Button>Button<Icon type='down'/></Button></Dropdown>&emsp;
               <Dropdown overlay={menu} trigger={['click']}><a>click me <Icon type='down'/></a></Dropdown>&emsp;
             </Card>
-          </Col>
-          <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
-              <Dropdown overlay={menu2}><a href="">Cascading menu <Icon type="down"/></a></Dropdown>&emsp;&emsp;
-              <Dropdown overlay={menu2}><Button>Cascading menu <Icon type="down"/></Button></Dropdown>
-            </Card>
-          </Col>
-          <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
               <Dropdown overlay={menu2} trigger={['click']}>
                 <a href="">click menu <Icon type="down"/></a>
@@ -61,6 +53,10 @@ class DropdownDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
+            <Card bordered={false} style={styles.colItem}>
+              <Dropdown overlay={menu2}><a href="">Cascading menu <Icon type="down"/></a></Dropdown>&emsp;&emsp;
+              <Dropdown overlay={menu2}><Button>Cascading menu <Icon type="down"/></Button></Dropdown>
+            </Card>
             <Card bordered={false} style={styles.colItem}>
               <p>
                 <Dropdown overlay={menu} placement="bottomLeft"><Button>bottomLeft</Button></Dropdown>&emsp;
@@ -83,7 +79,7 @@ class DropdownDemo extends React.Component {
 const styles = {
   colItem: {
     borderRadius: 3,
-    margin: '5px 0'
+    margin: '10px 0'
   }
 }
 
