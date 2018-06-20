@@ -38,7 +38,7 @@ class SpinDemo extends React.Component {
     const loading2 = this.state.loading2
     return (
       <div>
-        <CustomBreadcrumb first='反馈' last='加载中'/>
+        <CustomBreadcrumb arr={['反馈','加载中']}/>
         <Card hoverable bordered={false} style={{marginBottom: 5}} title='何时使用'>
           页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
         </Card>

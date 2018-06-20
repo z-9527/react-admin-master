@@ -6,7 +6,7 @@ class UploadDemo extends React.Component{
   render(){
     return (
       <div>
-        <CustomBreadcrumb first='输入' last='上传'/>
+        <CustomBreadcrumb arr={['输入','上传']}/>
         <Card hoverable bordered={false}
               style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用'>
           上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。

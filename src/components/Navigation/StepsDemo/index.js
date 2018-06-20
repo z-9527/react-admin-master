@@ -36,7 +36,7 @@ class StepsDemo extends React.Component {
     const {size, current} = this.state
     return (
       <div>
-        <CustomBreadcrumb first='导航' last='步骤条'/>
+        <CustomBreadcrumb arr={['导航', '步骤条']}/>
         <Card title='何时使用' hoverable style={{marginBottom: 5}}>
           当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务，引导用户按照流程完成任务的导航条
         </Card>

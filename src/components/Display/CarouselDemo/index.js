@@ -6,7 +6,7 @@ class CarouselDemo extends React.Component {
   render(){
     return (
       <div>
-        <CustomBreadcrumb first='显示' last='轮播图'/>
+        <CustomBreadcrumb arr={['显示','轮播图']}/>
         <Card hoverable bordered={false}
               style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
           <ul style={{listStyle: 'inside circle'}}>

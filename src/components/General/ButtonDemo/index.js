@@ -30,7 +30,7 @@ class ButtonDemo extends React.Component {
     );
     return (
       <div>
-        <CustomBreadcrumb first='基本' last='按钮'/>
+        <CustomBreadcrumb arr={['基本','按钮']}/>
         <Card hoverable bordered={false} style={{marginBottom: 5}} title='何时使用'>
           标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
         </Card>

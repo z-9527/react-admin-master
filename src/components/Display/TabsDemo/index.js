@@ -58,7 +58,7 @@ class TabsDemo extends React.Component {
     const {mode, size, activeKey, panes} = this.state
     return (
       <div>
-        <CustomBreadcrumb first='显示' last='标签页'/>
+        <CustomBreadcrumb arr={['显示','标签页']}/>
         <Card hoverable bordered={false}
               style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用'>
           提供平级的区域将大块内容进行收纳和展现，保持界面整洁。<br/>
