@@ -59,7 +59,7 @@ class IconDemo extends React.Component {
         }
         <BackTop visibilityHeight={200} style={{right: 50}}/>
         <Affix style={styles.affixBox}>
-          <Anchor offsetTop={50}>
+          <Anchor offsetTop={50} affix={false}>
             <Anchor.Link href='#howUse' title='如何使用'/>
             <Anchor.Link href='#standard' title='图标的命名规范'/>
             <Anchor.Link href='#direction' title='方向性图标'/>
