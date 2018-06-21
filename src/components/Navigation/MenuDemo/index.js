@@ -30,7 +30,7 @@ class MenuDemo extends React.Component {
         <Row gutter={16}>
           <Col span={12}>
             <Card bordered={false} style={styles.colItem}>
-              <Row>
+              <Row type='flex' align='middle'>
                 <Col span={12}>
                   <Menu mode="inline" style={{width: 200}}>
                     <Menu.SubMenu key='mail' title={<span><Icon type='mail'/><span>Navigation One</span></span>}>
@@ -48,14 +48,14 @@ class MenuDemo extends React.Component {
                     </Menu.SubMenu>
                   </Menu>
                 </Col>
-                <Col span={12} style={{paddingTop: 40}}>
+                <Col span={12}>
                   内嵌菜单<br/>
                   垂直菜单，子菜单内嵌在菜单区域。
                 </Col>
               </Row>
             </Card>
             <Card bordered={false} style={styles.colItem}>
-              <Row>
+              <Row type='flex' align='middle'>
                 <Col span={12}>
                   <Menu
                     mode="inline"
@@ -77,7 +77,7 @@ class MenuDemo extends React.Component {
                     </Menu.SubMenu>
                   </Menu>
                 </Col>
-                <Col span={12} style={{paddingTop: 30}}>
+                <Col span={12}>
                   只展开当前父级菜单<br/>
                   点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
                 </Col>
