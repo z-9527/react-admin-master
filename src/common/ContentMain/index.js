@@ -20,6 +20,7 @@ const UploadDemo = AsyncComponent(()=>import('../../components/Entry/UploadDemo/
 const CarouselDemo = AsyncComponent(()=>import('../../components/Display/CarouselDemo/index'))
 const CollapseDemo = AsyncComponent(()=>import('../../components/Display/CollapseDemo/index'))
 const ListDemo = AsyncComponent(()=>import('../../components/Display/ListDemo/index'))
+const TableDemo = AsyncComponent(()=>import('../../components/Display/TableDemo/index'))
 const TabsDemo = AsyncComponent(()=>import('../../components/Display/TabsDemo/index'))
 
 //反馈组件Demo
@@ -56,6 +57,7 @@ class ContentMain extends React.Component{
           <Route exact path='/home/display/carousel' component={CarouselDemo}/>
           <Route exact path='/home/display/collapse' component={CollapseDemo}/>
           <Route exact path='/home/display/list' component={ListDemo}/>
+          <Route exact path='/home/display/table' component={TableDemo}/>
           <Route exact path='/home/display/tabs' component={TabsDemo}/>
 
           <Route exact path='/home/feedback/modal' component={ModalDemo}/>

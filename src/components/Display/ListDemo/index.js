@@ -133,7 +133,7 @@ class ListDemo extends React.Component {
         <BackTop visibilityHeight={200} style={{right: 50}}/>
         <Affix style={styles.affixBox}>
           <Anchor offsetTop={50} affix={false}>
-            <Anchor.Link href='#howUse' title='如何使用'/>
+            <Anchor.Link href='#howUse' title='何时使用'/>
             <Anchor.Link href='#basicUsage' title='基本用法'/>
             <Anchor.Link href='#remoteLoading' title='加载更多'/>
             <Anchor.Link href='#verticalStyle' title='竖排列表样式'/>
