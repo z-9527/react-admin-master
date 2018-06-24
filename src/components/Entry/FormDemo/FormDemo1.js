@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Cascader, Tooltip, Icon, Form, Checkbox, Select, Input,Button,Col,Row,message } from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb'
+import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -58,11 +58,17 @@ const options = [
 class FormDemo1 extends React.Component {
   state = {
     text:'获取验证码',
-    disabled:false
+    disabled:false,
+
   }
+  timer = 0
   countdown = (e)=>{
     let time = 60
-    setInterval(()=>{
+    this.setState({
+      text:--time + 's',
+      disabled:true
+    })
+    this.timer=setInterval(()=>{
      if(time>0){
        this.setState({
          text:--time + 's',
@@ -80,12 +86,15 @@ class FormDemo1 extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if(err){
-        message.error('请先填写正确的表格')
+        message.error('请先填写正确的表单')
       } else {
         message.success('提交成功')
         console.log(values)
       }
     });
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer)
   }
   render () {
     const {getFieldDecorator,getFieldValue} = this.props.form

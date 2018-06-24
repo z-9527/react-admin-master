@@ -14,6 +14,8 @@ const MenuDemo = AsyncComponent(()=>import('../../components/Navigation/MenuDemo
 const StepsDemo = AsyncComponent(()=>import('../../components/Navigation/StepsDemo/index'))
 
 //输入组件Demo
+const FormDemo1 = AsyncComponent(()=>import('../../components/Entry/FormDemo/FormDemo1'))
+const FormDemo2 = AsyncComponent(()=>import('../../components/Entry/FormDemo/FormDemo2'))
 const UploadDemo = AsyncComponent(()=>import('../../components/Entry/UploadDemo/index'))
 
 //显示组件Demo
@@ -52,6 +54,8 @@ class ContentMain extends React.Component{
           <Route exact path='/home/navigation/menu' component={MenuDemo}/>
           <Route exact path='/home/navigation/steps' component={StepsDemo}/>
 
+          <Route exact path='/home/entry/form/basic-form' component={FormDemo1}/>
+          <Route exact path='/home/entry/form/step-form' component={FormDemo2}/>
           <Route exact path='/home/entry/upload' component={UploadDemo}/>
 
           <Route exact path='/home/display/carousel' component={CarouselDemo}/>

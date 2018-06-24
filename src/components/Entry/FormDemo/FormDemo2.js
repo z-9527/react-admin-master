@@ -1,7 +1,7 @@
 import React from 'react'
-import {Card, Alert, Divider, Select, Steps, Input, Button, Form} from 'antd'
+import {Card, Alert, Divider, Select, Steps, Input, Button, Form,Icon} from 'antd'
 import {inject,observer} from 'mobx-react'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb'
+import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
 import './css/formDeni2.css'
 import {digitUppercase} from '../../../utils/utils'
 
@@ -36,7 +36,7 @@ class Step1 extends React.Component{
     const {getFieldDecorator} = this.props.form
     return (
       <div>
-        <Form style={styles.step1Form} hideRequiredMark>
+        <Form className='stepForm' hideRequiredMark>
           <Form.Item {...formItemLayout} label="付款账户">
             {getFieldDecorator('payAccount', {
               initialValue: 'ant-design@alipay.com',
@@ -103,7 +103,7 @@ class Step1 extends React.Component{
   }
 }
 
-@inject('stepFormStore') @Form.create()
+@inject('stepFormStore') @Form.create() @observer
 class Step2 extends React.Component{
   state = {
     loading:false
@@ -114,12 +114,12 @@ class Step2 extends React.Component{
         this.setState({
           loading:true
         })
-        setTimeout(()=>{
-          this.props.stepFormStore.setCurrent(2)
-          this.setState({
-            loading:false
-          },2000)
-        })
+       setTimeout(()=>{
+         this.setState({
+           loading:false
+         })
+         this.props.stepFormStore.setCurrent(2)
+       },2000)
       }
     })
   }
@@ -132,14 +132,14 @@ class Step2 extends React.Component{
           <Form.Item {...formItemLayout} className='setFormText' label="付款账户">
             {this.props.stepFormStore.info.payAccount}
           </Form.Item>
-          <Form.Item {...formItemLayout} style={{marginBottom:18}} label="收款账户">
+          <Form.Item {...formItemLayout} label="收款账户">
             {this.props.stepFormStore.info.receiverAccount}
           </Form.Item>
           <Form.Item {...formItemLayout} className='setFormText' label="收款人姓名">
             {this.props.stepFormStore.info.receiverName}
           </Form.Item>
           <Form.Item {...formItemLayout} className='setFormText' label="转账金额">
-            <span>{this.props.stepFormStore.info.amount}</span>
+            <span className='money'>{this.props.stepFormStore.info.amount}</span>
             <span>（{digitUppercase(this.props.stepFormStore.info.amount)}）</span>
           </Form.Item>
           <Divider/>
@@ -165,7 +165,7 @@ class Step2 extends React.Component{
             }}
             label=""
           >
-            <Button type="primary" onClick={this.handleSubmit} loading={this.loading}>提交</Button>
+            <Button type="primary" onClick={this.handleSubmit} loading={this.state.loading}>提交</Button>
             <Button onClick={()=>this.props.stepFormStore.setCurrent(0)} style={{ marginLeft: 8 }}>上一步</Button>
           </Form.Item>
         </Form>
@@ -173,11 +173,41 @@ class Step2 extends React.Component{
     )
   }
 }
+
+@inject('stepFormStore') @observer
 class Step3 extends React.Component{
   render(){
     return (
-      <div>
-
+      <div id='step3'>
+        <div>
+          <div className='icon-box'>
+            <Icon type='check-circle'/>
+          </div>
+          <div>
+            <h3 className='success'>操作成功</h3>
+            <p className='success-desc'>预计两小时内到账</p>
+          </div>
+          <Form className='result'>
+            <Form.Item>
+              <Form.Item {...formItemLayout} className='setFormText' label="付款账户">
+                {this.props.stepFormStore.info.payAccount}
+              </Form.Item>
+              <Form.Item {...formItemLayout} style={{marginBottom:18}} label="收款账户">
+                {this.props.stepFormStore.info.receiverAccount}
+              </Form.Item>
+              <Form.Item {...formItemLayout} className='setFormText' label="收款人姓名">
+                {this.props.stepFormStore.info.receiverName}
+              </Form.Item>
+              <Form.Item {...formItemLayout} className='setFormText' label="转账金额">
+                <span className='money'>{this.props.stepFormStore.info.amount}</span>元
+              </Form.Item>
+            </Form.Item>
+          </Form>
+          <div>
+            <Button type='primary' onClick={()=>this.props.stepFormStore.setCurrent(0)}>再转一笔</Button>
+            <Button style={{ marginLeft: 8 }}>查看账单</Button>
+          </div>
+        </div>
       </div>
     )
   }
@@ -195,7 +225,7 @@ class FormDemo2 extends React.Component {
   render () {
     return (
       <div>
-        <CustomBreadcrumb arr={['输入', '表单','基础表单']}/>
+        <CustomBreadcrumb arr={['输入', '表单','分步表单']}/>
         <Card hoverable bordered={false}
               style={{marginBottom: 5}} title='何时使用'>
           将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成
@@ -217,10 +247,6 @@ const styles = {
   steps:{
     maxWidth:750,
     margin: '16px auto'
-  },
-  step1Form:{
-    margin: '40px auto',
-    maxWidth:500
   },
   desc:{
     padding:'0 56px',

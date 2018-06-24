@@ -1,4 +1,3 @@
-import React from 'react'
 import {observable,action} from 'mobx'
 
 //刷新页面不会使mobx重新初始化，除非清空缓冲并硬性重新加载
