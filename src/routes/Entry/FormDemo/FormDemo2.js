@@ -227,7 +227,7 @@ class FormDemo2 extends React.Component {
       <div>
         <CustomBreadcrumb arr={['输入', '表单','分步表单']}/>
         <Card hoverable bordered={false}
-              style={{marginBottom: 5}} title='何时使用'>
+              style={{marginBottom: 15}} title='何时使用'>
           将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成
         </Card>
         <Card title='分步表单' bordered={false} style={{minHeight: 600}}>

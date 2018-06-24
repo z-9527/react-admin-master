@@ -90,7 +90,7 @@ class ModalDemo extends React.Component {
     return (
       <div>
         <CustomBreadcrumb arr={['反馈','对话框']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 10}} title='何时使用'>
+        <Card hoverable bordered={false} style={{marginBottom: 15}} title='何时使用'>
           需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Modal 在当前页面正中打开一个浮层，承载相应的操作。<br/>
           另外当需要一个简洁的确认框询问用户时，可以使用精心封装好的 antd.Modal.confirm() 等方法。
         </Card>

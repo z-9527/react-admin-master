@@ -33,7 +33,7 @@ class NotificationDemo extends React.Component{
     return (
       <div>
         <CustomBreadcrumb arr={['反馈','通知提醒框']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 5,lineHeight:'2em'}} title='何时使用'>
+        <Card hoverable bordered={false} style={{marginBottom: 10,lineHeight:'2em'}} title='何时使用'>
           在系统四个角显示通知提醒信息。经常用于以下情况：
           <ul style={{listStyle: 'inside circle'}}>
             <li>较为复杂的通知内容</li>

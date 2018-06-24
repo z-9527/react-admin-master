@@ -68,7 +68,10 @@ const menus = [
   {
     title: '其它',
     icon: 'bulb',
-    key: '/home/other'
+    key: '/home/other',
+    subs:[
+      {key: '/home/other/animation', title: '动画', icon: '',},
+    ]
   },
   {
     title: '关于',

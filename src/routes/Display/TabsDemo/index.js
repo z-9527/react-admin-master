@@ -60,7 +60,7 @@ class TabsDemo extends React.Component {
       <div>
         <CustomBreadcrumb arr={['显示','标签页']}/>
         <Card hoverable bordered={false}
-              style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用'>
+              style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
           提供平级的区域将大块内容进行收纳和展现，保持界面整洁。<br/>
           Ant Design 依次提供了三级选项卡，分别用于不同的场景。
           <ul style={{listStyle: 'inside circle'}}>

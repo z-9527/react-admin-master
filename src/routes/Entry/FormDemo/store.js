@@ -1,6 +1,6 @@
 import {observable,action} from 'mobx'
 
-//刷新页面不会使mobx重新初始化，除非清空缓冲并硬性重新加载
+//刷新页面会使mobx重新初始化。vuex会吗？
 
 class StepFormStore{
   @observable current = 0

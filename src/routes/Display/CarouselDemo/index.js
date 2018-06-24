@@ -8,7 +8,7 @@ class CarouselDemo extends React.Component {
       <div>
         <CustomBreadcrumb arr={['显示','轮播图']}/>
         <Card hoverable bordered={false}
-              style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
+              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
           <ul style={{listStyle: 'inside circle'}}>
             <li>当有一组平级的内容</li>
             <li>当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现</li>

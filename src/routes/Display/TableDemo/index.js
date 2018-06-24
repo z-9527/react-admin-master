@@ -522,7 +522,7 @@ class TableDemo extends React.Component {
       <div>
         <CustomBreadcrumb arr={['显示', '表格']}/>
         <Card hoverable bordered={false}
-              style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用' id='howUse'>
+              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用' id='howUse'>
           <ul style={{listStyle: 'inside circle'}}>
             <li>当有大量结构化的数据需要展现时</li>
             <li>标当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时</li>

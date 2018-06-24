@@ -72,7 +72,7 @@ class ListDemo extends React.Component {
         <CustomBreadcrumb arr={['显示', '列表']}/>
         <Card hoverable bordered={false}
               id='howUse'
-              style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
+              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
           最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
         </Card>
         <Card bordered={false} title='基本用法' style={{marginBottom: 15}} id='basicUsage'>

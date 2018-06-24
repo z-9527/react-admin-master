@@ -31,6 +31,7 @@ const ModalDemo = AsyncComponent(()=>import('../../routes/Feedback/ModalDemo/ind
 const NotificationDemo = AsyncComponent(()=>import('../../routes/Feedback/NotificationDemo/index'))
 
 //其它
+const AnimationDemo = AsyncComponent(()=>import('../../routes/Other/AnimationDemo/index'))
 //关于
 
 
@@ -67,6 +68,8 @@ class ContentMain extends React.Component{
           <Route exact path='/home/feedback/modal' component={ModalDemo}/>
           <Route exact path='/home/feedback/notification' component={NotificationDemo}/>
           <Route exact path='/home/feedback/spin' component={SpinDemo}/>
+
+          <Route exact path='/home/other/animation' component={AnimationDemo}/>
 
           <Redirect exact from='/' to='/home'/>
         </Switch>

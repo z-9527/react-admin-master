@@ -132,7 +132,7 @@ class FormDemo1 extends React.Component {
       <div>
         <CustomBreadcrumb arr={['输入', '表单', '基础表单']}/>
         <Card hoverable bordered={false}
-              style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用'>
+              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
           表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景
         </Card>
         <Card bordered={false} title='基础表单'>

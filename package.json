@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.6.1",
     "antd": "^3.6.2",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
@@ -42,6 +43,7 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "resolve": "1.6.0",
+    "shufflejs": "^5.1.2",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
