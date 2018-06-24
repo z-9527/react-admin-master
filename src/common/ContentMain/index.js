@@ -2,33 +2,33 @@ import React from 'react'
 import {withRouter,Route,Switch,Redirect} from 'react-router-dom'
 import AsyncComponent from '../../utils/AsyncComponent'
 
-const Home = AsyncComponent(()=>import('../../components/Home/index'))
+const Home = AsyncComponent(()=>import('../../routes/Home/index'))
 
 //基本组件Demo
-const ButtonDemo = AsyncComponent(()=>import('../../components/General/ButtonDemo/index'))
-const IconDemo = AsyncComponent(()=>import('../../components/General/IconDemo/index'))
+const ButtonDemo = AsyncComponent(()=>import('../../routes/General/ButtonDemo/index'))
+const IconDemo = AsyncComponent(()=>import('../../routes/General/IconDemo/index'))
 
 //导航组件Demo
-const DropdownDemo = AsyncComponent(()=>import('../../components/Navigation/DropdownDemo/index'))
-const MenuDemo = AsyncComponent(()=>import('../../components/Navigation/MenuDemo/index'))
-const StepsDemo = AsyncComponent(()=>import('../../components/Navigation/StepsDemo/index'))
+const DropdownDemo = AsyncComponent(()=>import('../../routes/Navigation/DropdownDemo/index'))
+const MenuDemo = AsyncComponent(()=>import('../../routes/Navigation/MenuDemo/index'))
+const StepsDemo = AsyncComponent(()=>import('../../routes/Navigation/StepsDemo/index'))
 
 //输入组件Demo
-const FormDemo1 = AsyncComponent(()=>import('../../components/Entry/FormDemo/FormDemo1'))
-const FormDemo2 = AsyncComponent(()=>import('../../components/Entry/FormDemo/FormDemo2'))
-const UploadDemo = AsyncComponent(()=>import('../../components/Entry/UploadDemo/index'))
+const FormDemo1 = AsyncComponent(()=>import('../../routes/Entry/FormDemo/FormDemo1'))
+const FormDemo2 = AsyncComponent(()=>import('../../routes/Entry/FormDemo/FormDemo2'))
+const UploadDemo = AsyncComponent(()=>import('../../routes/Entry/UploadDemo/index'))
 
 //显示组件Demo
-const CarouselDemo = AsyncComponent(()=>import('../../components/Display/CarouselDemo/index'))
-const CollapseDemo = AsyncComponent(()=>import('../../components/Display/CollapseDemo/index'))
-const ListDemo = AsyncComponent(()=>import('../../components/Display/ListDemo/index'))
-const TableDemo = AsyncComponent(()=>import('../../components/Display/TableDemo/index'))
-const TabsDemo = AsyncComponent(()=>import('../../components/Display/TabsDemo/index'))
+const CarouselDemo = AsyncComponent(()=>import('../../routes/Display/CarouselDemo/index'))
+const CollapseDemo = AsyncComponent(()=>import('../../routes/Display/CollapseDemo/index'))
+const ListDemo = AsyncComponent(()=>import('../../routes/Display/ListDemo/index'))
+const TableDemo = AsyncComponent(()=>import('../../routes/Display/TableDemo/index'))
+const TabsDemo = AsyncComponent(()=>import('../../routes/Display/TabsDemo/index'))
 
 //反馈组件Demo
-const SpinDemo = AsyncComponent(()=>import('../../components/Feedback/SpinDemo/index'))
-const ModalDemo = AsyncComponent(()=>import('../../components/Feedback/ModalDemo/index'))
-const NotificationDemo = AsyncComponent(()=>import('../../components/Feedback/NotificationDemo/index'))
+const SpinDemo = AsyncComponent(()=>import('../../routes/Feedback/SpinDemo/index'))
+const ModalDemo = AsyncComponent(()=>import('../../routes/Feedback/ModalDemo/index'))
+const NotificationDemo = AsyncComponent(()=>import('../../routes/Feedback/NotificationDemo/index'))
 
 //其它
 //关于

@@ -1,4 +1,4 @@
-import stepFormStore from '../components/Entry/FormDemo/store'
+import stepFormStore from '../routes/Entry/FormDemo/store'
 
 const store = {
   stepFormStore
