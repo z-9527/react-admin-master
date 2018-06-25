@@ -63,7 +63,6 @@
     flex-direction: column;
     justify-content: center;
     height: 200px;
-    background: #364d79;
     overflow: hidden;
     color: #fff;
     font-size: 12px;
@@ -74,9 +73,6 @@
 }
 .ant-carousel .slider-item p{
     display: none;
-}
-.ant-carousel .slider-item:nth-child(2){
-    background: rgb(100, 203, 204);
 }
 .ant-carousel .slick-slide h3 {
     font-size: 32px;

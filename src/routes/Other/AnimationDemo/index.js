@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Menu, Row, Col, Dropdown, Icon, message, Button} from 'antd'
+import {Card, Button} from 'antd'
 import Shuffle from 'shufflejs'
 import 'animate.css'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
