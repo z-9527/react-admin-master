@@ -111,17 +111,20 @@ class AnimationDemo extends React.Component{
         <div style={styles.box}>
           <div ref={(div)=>this.shuffleDemo=div}>
             {
+              //移入移除函数最好绑定在父元素上，因为父元素不会因为动画效果而移动，如果绑定在h3上，鼠标没有移动，但是h3移动了，鼠标就不在h3中，会触发onMouseLeave事件
               animations.map(item=>{
                 return item.list.map(i=>{
                   return <div
-                    className='shuffle-item animated'
+                    className='shuffle-item'
                     style={styles.item}
-                    ref={(el)=>this[i]=el}
-                    onMouseEnter={()=>this[i].classList.add(i,'infinite')}
-                    onMouseLeave={()=>this[i].classList.remove(i,'infinite')}
+                    onMouseEnter={(e)=>this[i].classList.add(i,'infinite')}
+                    onMouseLeave={(e)=>this[i].classList.remove(i,'infinite')}
                     data-groups={JSON.stringify(getGroups(item.groups))}
                     key={i}>
-                    <h3>{i}</h3>
+                    <h3 style={styles.title}
+                        className='animated'
+                        ref={(el)=>this[i]=el}
+                    >{i}</h3>
                   </div>
                 })
               })
@@ -139,16 +142,19 @@ const styles = {
   item:{
     width:'22%',
     marginTop:16,
-    backgroundColor:'#fff',
-    padding:40,
-    textAlign:'center',
-    fontSize:14,
     fontWeight:500,
     border:'1px solid #d9d9d9'
   },
   box:{
     minHeight:500,
     padding: '10px 32px',
+  },
+  title:{
+    backgroundColor:'#fff',
+    padding:40,
+    textAlign:'center',
+    fontSize:14,
+    margin:0
   }
 }
 
