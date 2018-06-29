@@ -56,7 +56,7 @@ class CarouselDemo extends React.Component {
           </ul>
         </Card>
         <Card title='基本用法'>
-          <Carousel speed={100} arrows afterChange={(current)=>this.setState({current})}>
+          <Carousel speed={100} arrows afterChange={(current)=>this.setState({current})} autoplay>
             <div>
               <div className='slider-item' style={{background:'#364d79'}}>
                 <h3 className={current === 0 ? this.animations[0] : ''}>Ant Design of React</h3>
