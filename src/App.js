@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     // 设置Sider的minHeight可以是左右自适应对齐
     return (
-      <div>
+      <div id='page'>
         <Layout>
           <Sider collapsible
                  trigger={null}
@@ -32,7 +32,7 @@ class App extends Component {
             <Header style={{background: '#fff', padding: '0 16px'}}>
               <Icon
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                className='triggle'
+                className='trigger'
                 onClick={this.toggle}/>
             </Header>
             <Content style={{margin: '16px'}}>

@@ -3,6 +3,7 @@ import {Card, Col, Row, Spin, Icon, Alert, Switch, Button} from 'antd'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 class SpinDemo extends React.Component {
   state = {
@@ -39,16 +40,14 @@ class SpinDemo extends React.Component {
     return (
       <div>
         <CustomBreadcrumb arr={['反馈','加载中']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 5}} title='何时使用'>
-          页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
-        </Card>
+        <TypingCard source='页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。'/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Spin/>&emsp;
               <Spin indicator={<Icon type='loading'/>}/>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Spin tip="Loading...">
                 <Alert
                   message="Alert message title"
@@ -57,18 +56,18 @@ class SpinDemo extends React.Component {
                 />
               </Spin>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Button onClick={this.NProgressStart} loading={loading2}>页面顶部进度条加载</Button>&emsp;
               <Button onClick={this.NProgressDone}>顶部进度条加载完成</Button>
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Spin size='small'/>&emsp;
               <Spin/>&emsp;
               <Spin size='large'/>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <div style={{marginBottom: '1em'}}>
                 <Spin tip="Loading..." spinning={this.state.loading}>
                   <Alert
@@ -84,13 +83,6 @@ class SpinDemo extends React.Component {
         </Row>
       </div>
     )
-  }
-}
-
-const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
   }
 }
 

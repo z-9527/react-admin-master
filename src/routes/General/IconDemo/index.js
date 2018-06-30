@@ -1,6 +1,7 @@
 import React from 'react'
 import {Icon, Card, BackTop, Anchor, Affix} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const icons = [
   {
@@ -27,23 +28,21 @@ const icons = [
 
 class IconDemo extends React.Component {
   render() {
+    const cardContent = '使用Icon标签声明组件，指定图标对应的 type 属性。'
+    const cardContent2 = `我们为每个图标赋予了语义化的命名，命名规则如下:
+          <ul class="card-ul">
+            <li>实心和描线图标保持同名，用 -o 来区分，比如 question-circle（实心） 和 question-circle-o（描线）；</li>
+            <li>命名顺序：[图标名]-[形状?]-[描线?]-[方向?]。</li>
+          </ul>`
     return (
       <div>
         <CustomBreadcrumb arr={['基本','图标']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 15}} title='如何使用' id='howUse'>
-          使用 <Icon/> 标签声明组件，指定图标对应的 type 属性。
-        </Card>
-        <Card hoverable bordered={false} style={{marginBottom: 15}} title='图标的命名规范' id='standard'>
-          我们为每个图标赋予了语义化的命名，命名规则如下:
-          <ul style={{listStyle: 'inside circle'}}>
-            <li style={{lineHeight: '2em'}}>实心和描线图标保持同名，用 -o 来区分，比如 question-circle（实心） 和 question-circle-o（描线）；</li>
-            <li>命名顺序：[图标名]-[形状?]-[描线?]-[方向?]。</li>
-          </ul>
-        </Card>
+        <TypingCard title='如何使用' source={cardContent} id='howUse'/>
+        <TypingCard title='图标的命名规范' id='standard' source={cardContent2} height={206}/>
         {
           icons.map(item => {
             return (
-              <Card title={item.title} bordered={false} style={{marginBottom: 15}} key={item.title} id={item.anchor}>
+              <Card title={item.title} bordered={false} className='card-item' key={item.title} id={item.anchor}>
                 {
                   item.list.map(icon => {
                     return (

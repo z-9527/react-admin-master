@@ -4,6 +4,7 @@ import {inject,observer} from 'mobx-react'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
 import './css/formDeni2.css'
 import {digitUppercase} from '../../../utils/utils'
+import TypingCard from '../../../common/TypingCard'
 
 const { Step } = Steps;
 const { Option } = Select;
@@ -226,10 +227,7 @@ class FormDemo2 extends React.Component {
     return (
       <div>
         <CustomBreadcrumb arr={['输入', '表单','分步表单']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 15}} title='何时使用'>
-          将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成
-        </Card>
+        <TypingCard source='将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成'/>
         <Card title='分步表单' bordered={false} style={{minHeight: 600}}>
           <Steps style={styles.steps} current={this.props.stepFormStore.current}>
             <Step title="填写转账信息" />

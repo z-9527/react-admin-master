@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Icon, Tabs, message, Radio} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const TabPane = Tabs.TabPane
 const panes = [
@@ -56,22 +57,20 @@ class TabsDemo extends React.Component {
 
   render() {
     const {mode, size, activeKey, panes} = this.state
-    return (
-      <div>
-        <CustomBreadcrumb arr={['显示','标签页']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
-          提供平级的区域将大块内容进行收纳和展现，保持界面整洁。<br/>
+    const cardContent = `提供平级的区域将大块内容进行收纳和展现，保持界面整洁。<br/>
           Ant Design 依次提供了三级选项卡，分别用于不同的场景。
-          <ul style={{listStyle: 'inside circle'}}>
+          <ul class="card-ul">
             <li>卡片式的页签，提供可关闭的样式，常用于容器顶部</li>
             <li>标准线条式页签，用于容器内部的主功能切换，这是最常用的 Tabs</li>
             <li>RadioButton 可作为更次级的页签来使用</li>
-          </ul>
-        </Card>
+          </ul>`
+    return (
+      <div>
+        <CustomBreadcrumb arr={['显示','标签页']}/>
+        <TypingCard source={cardContent} height={262}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='基本-默认选中第一项'>
+            <Card bordered={false} className='card-item' title='基本-默认选中第一项'>
               <Tabs defaultActiveKey="1"
                     onChange={a => message.info('选中标签页' + a)}>
                 <Tabs.TabPane tab='tab1' key='1'>Content of Tab Pane
@@ -82,7 +81,7 @@ class TabsDemo extends React.Component {
                   3</Tabs.TabPane>
               </Tabs>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='图标-有图标的标签'>
+            <Card bordered={false} className='card-item' title='图标-有图标的标签'>
               <Tabs defaultActiveKey="2"
                     onChange={a => message.info('选中标签页' + a)}>
                 <Tabs.TabPane tab={<span><Icon type="apple"/>Tab 1</span>}
@@ -91,7 +90,7 @@ class TabsDemo extends React.Component {
                               key="2">Tab 2</Tabs.TabPane>
               </Tabs>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='大小-可设置标签页大小'>
+            <Card bordered={false} className='card-item' title='大小-可设置标签页大小'>
               <div style={{marginBottom: '1em'}}>
                 <Radio.Group value={size}
                              onChange={e => this.setState({size: e.target.value})}>
@@ -110,7 +109,7 @@ class TabsDemo extends React.Component {
                   3</Tabs.TabPane>
               </Tabs>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='动态-新增和关闭标签页'>
+            <Card bordered={false} className='card-item' title='动态-新增和关闭标签页'>
               <Tabs activeKey={activeKey} type="editable-card"
                     onChange={k => this.setState({activeKey: k})}
                     onEdit={this.onEdit}>
@@ -121,7 +120,7 @@ class TabsDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='禁用-禁用某一项'>
+            <Card bordered={false} className='card-item' title='禁用-禁用某一项'>
               <Tabs defaultActiveKey="1"
                     onChange={a => message.info('选中标签页' + a)}>
                 <Tabs.TabPane tab='tab1' key='1'>Content of Tab Pane
@@ -132,7 +131,7 @@ class TabsDemo extends React.Component {
                   3</Tabs.TabPane>
               </Tabs>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='滑动-可左右滑动'>
+            <Card bordered={false} className='card-item' title='滑动-可左右滑动'>
               <div style={{marginBottom: '1em'}}>
                 <Radio.Group value={mode}
                              onChange={e => this.setState({mode: e.target.value})}>
@@ -155,7 +154,7 @@ class TabsDemo extends React.Component {
                 <TabPane tab="Tab 11" key="11">Content of tab 11</TabPane>
               </Tabs>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='卡片-卡片式标签页'>
+            <Card bordered={false} className='card-item' title='卡片-卡片式标签页'>
               <Tabs defaultActiveKey="1" type='card'>
                 <Tabs.TabPane tab='tab1' key='1'>Content of Tab Pane
                   1</Tabs.TabPane>
@@ -169,13 +168,6 @@ class TabsDemo extends React.Component {
         </Row>
       </div>
     )
-  }
-}
-
-const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
   }
 }
 

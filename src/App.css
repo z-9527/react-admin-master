@@ -3,13 +3,21 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
-.triggle{
+.trigger{
     font-size: 18px;
     line-height: 64px;
     cursor: pointer;
 }
-.triggle:hover{
+.trigger:hover{
     color: #1890ff;
+}
+#page .card-item{
+    margin-bottom: 10px;
+    border-radius: 3px;
+    line-height: 2em;
+}
+#page .card-ul{
+    list-style: inside circle;
 }
 
 /*美化webkit内核滚动条*/

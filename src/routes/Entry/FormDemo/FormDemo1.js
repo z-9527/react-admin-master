@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Cascader, Tooltip, Icon, Form, Checkbox, Select, Input,Button,Col,Row,message } from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -128,13 +129,11 @@ class FormDemo1 extends React.Component {
         <Option value={87}>+87</Option>
       </Select>
     );
+    const cardContent = '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景'
     return (
       <div>
         <CustomBreadcrumb arr={['输入', '表单', '基础表单']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
-          表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景
-        </Card>
+       <TypingCard source={cardContent}/>
         <Card bordered={false} title='基础表单'>
           <Form layout='horizontal' style={{width:'70%',margin:'0 auto'}} onSubmit={this.handleSubmit}>
             <FormItem label='邮箱' {...formItemLayout}>

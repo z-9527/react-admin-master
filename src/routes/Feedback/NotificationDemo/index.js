@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card,Col,Row,Button,Tooltip,notification,Select} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 class NotificationDemo extends React.Component{
   state = {
@@ -30,34 +31,33 @@ class NotificationDemo extends React.Component{
   }
   render(){
     const placement = this.state.placement
-    return (
-      <div>
-        <CustomBreadcrumb arr={['反馈','通知提醒框']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 10,lineHeight:'2em'}} title='何时使用'>
-          在系统四个角显示通知提醒信息。经常用于以下情况：
-          <ul style={{listStyle: 'inside circle'}}>
+    const cardContent = ` 在系统四个角显示通知提醒信息。经常用于以下情况：
+          <ul class="card-ul">
             <li>较为复杂的通知内容</li>
             <li>带有交互的通知，给出用户下一步的行动点</li>
             <li>系统主动推送</li>
-          </ul>
-        </Card>
+          </ul>`
+    return (
+      <div>
+        <CustomBreadcrumb arr={['反馈','通知提醒框']}/>
+        <TypingCard source={cardContent} height={234}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Tooltip title='最简单的用法，4.5 秒后自动关闭' placement='right'>
                 <Button type='primary' onClick={this.openNotification}>基本用法</Button>
               </Tooltip>
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Tooltip title='设置duration: 0来取消自动关闭' placement='right'>
                 <Button type='primary' onClick={()=>this.openNotification({duration:0})}>取消自动关闭</Button>
               </Tooltip>
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
              <Button type='primary' onClick={()=>this.openNotificationType('success')}>成功</Button>&emsp;
              <Button type='primary' onClick={()=>this.openNotificationType('info')}>提醒</Button>&emsp;
              <Button type='primary' onClick={()=>this.openNotificationType('warning')}>警告</Button>&emsp;
@@ -65,21 +65,21 @@ class NotificationDemo extends React.Component{
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Tooltip title='使用 style 和 className 来定义样式' placement='right'>
                 <Button type='primary' onClick={()=>this.openNotification({style:{width: 600, marginLeft: 335 - 600,}})}>自定义样式</Button>
               </Tooltip>
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Tooltip title='自定义关闭按钮的样式和文字' placement='right'>
                 <Button type='primary' onClick={this.customNotification}>自定义按钮</Button>
               </Tooltip>
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Select defaultValue='topRight' style={{width:160}} onChange={v=>this.setState({placement:v})}>
                 <Select.Option value='topLeft'>topLeft</Select.Option>
                 <Select.Option value='topRight'>topRight</Select.Option>
@@ -92,12 +92,6 @@ class NotificationDemo extends React.Component{
         </Row>
       </div>
     )
-  }
-}
-const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '5px 0'
   }
 }
 

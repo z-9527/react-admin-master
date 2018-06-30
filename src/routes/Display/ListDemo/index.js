@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, Spin, Button, Radio, List, Switch, Avatar,BackTop,Anchor,Affix,Icon} from 'antd'
 import axios from 'axios'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const data = [
   'Racing car sprays burning fuel into crowd.',
@@ -70,12 +71,8 @@ class ListDemo extends React.Component {
     return (
       <div>
         <CustomBreadcrumb arr={['显示', '列表']}/>
-        <Card hoverable bordered={false}
-              id='howUse'
-              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
-          最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
-        </Card>
-        <Card bordered={false} title='基本用法' style={{marginBottom: 15}} id='basicUsage'>
+        <TypingCard id='howUse' source='最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。'/>
+        <Card bordered={false} title='基本用法' style={{marginBottom: 10}} id='basicUsage'>
           <Radio.Group value={size}
                        onChange={e => this.setState({size: e.target.value})}
                        style={{marginBottom: '1em'}}>
@@ -91,7 +88,7 @@ class ListDemo extends React.Component {
                 style={bordered ? styles.haveBorder : styles.noBorder}
                 renderItem={item => (<List.Item>{item}</List.Item>)}/>
         </Card>
-        <Card bordered={false} title='加载更多' style={{marginBottom: 15}} id='remoteLoading'>
+        <Card bordered={false} title='加载更多' style={{marginBottom: 10}} id='remoteLoading'>
           <List loading={loading}
                 dataSource={data2}
                 loadMore={loadMore}

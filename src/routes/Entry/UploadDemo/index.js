@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Icon, Upload, message, Button, Modal} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb'
+import TypingCard from '../../../common/TypingCard'
 
 const Dragger = Upload.Dragger;
 
@@ -121,26 +122,24 @@ class UploadDemo extends React.Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-    return (
-      <div>
-        <CustomBreadcrumb arr={['输入', '上传']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 5, lineHeight: '2em'}} title='何时使用'>
-          上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。
-          <ul style={{listStyle: 'inside circle'}}>
+    const cardContent = `上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。
+          <ul class="card-ul">
             <li>当需要上传一个或一些文件时</li>
             <li>当需要展现上传的进度时</li>
             <li>当需要使用拖拽交互时</li>
-          </ul>
-        </Card>
+          </ul>`
+    return (
+      <div>
+        <CustomBreadcrumb arr={['输入', '上传']}/>
+        <TypingCard source={cardContent} height={234}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='基本用法'>
+            <Card bordered={false} className='card-item' title='基本用法'>
               <Upload {...props}>
                 <Button><Icon type="upload"/>Upload</Button>
               </Upload>
             </Card>
-            <Card bordered={false} style={{...styles.colItem,minHeight:255}} title='照片墙'>
+            <Card bordered={false} style={{...styles.colItem, minHeight: 255}} title='照片墙'>
               <Upload
                 action="//jsonplaceholder.typicode.com/posts/"
                 listType="picture-card"
@@ -156,7 +155,7 @@ class UploadDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='用户头像上传'>
+            <Card bordered={false} className='card-item' title='用户头像上传'>
               <Row type='flex' align='middle'>
                 <Col span={8}>
                   <Upload
@@ -177,10 +176,10 @@ class UploadDemo extends React.Component {
                 </Col>
               </Row>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='拖拽上传'>
+            <Card bordered={false} className='card-item' title='拖拽上传'>
               <Dragger {...props2}>
                 <p className="ant-upload-drag-icon">
-                  <Icon type="inbox" />
+                  <Icon type="inbox"/>
                 </p>
                 <p className="ant-upload-text">点击或拖拽到此处完成上传</p>
                 <p className="ant-upload-hint">支持单个或批量上传。严禁上传公司数据或其他带文件</p>

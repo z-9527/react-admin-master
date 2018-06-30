@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Radio, Icon, Button, Steps, message} from 'antd'
 import CustomBreadcrumb from "../../../common/CustomBreadcrumb/index";
+import TypingCard from '../../../common/TypingCard'
 
 const Step = Steps.Step
 
@@ -34,36 +35,35 @@ class StepsDemo extends React.Component {
 
   render() {
     const {size, current} = this.state
+    const cardContent = '当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务，引导用户按照流程完成任务的导航条'
     return (
       <div>
         <CustomBreadcrumb arr={['导航', '步骤条']}/>
-        <Card title='何时使用' hoverable style={{marginBottom: 5}}>
-          当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务，引导用户按照流程完成任务的导航条
-        </Card>
+        <TypingCard source={cardContent}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='基本使用'>
+            <Card bordered={false} className='card-item' title='基本使用'>
               <Steps current={2}>
                 <Step title="Finished" description="This is a description."/>
                 <Step title="In Progress" description="This is a description."/>
                 <Step title="Waiting" description="This is a description."/>
               </Steps>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='基本使用'>
+            <Card bordered={false} className='card-item' title='基本使用'>
               <Steps current={1}>
                 <Step title="Finished" description="This is a description."/>
                 <Step title="In Progress" description="This is a description."/>
                 <Step title="Waiting" description="This is a description."/>
               </Steps>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='步骤运行错误'>
+            <Card bordered={false} className='card-item' title='步骤运行错误'>
               <Steps current={1} status="error">
                 <Step title="Finished" description="This is a description"/>
                 <Step title="In Process" description="This is a description"/>
                 <Step title="Waiting" description="This is a description"/>
               </Steps>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='步骤切换'>
+            <Card bordered={false} className='card-item' title='步骤切换'>
               <Steps current={current}>
                 {steps.map(item => <Step title={item.title}
                                          key={item.title}
@@ -85,7 +85,7 @@ class StepsDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='大小'>
+            <Card bordered={false} className='card-item' title='大小'>
               <Radio.Group style={{marginBottom: '1em'}}
                            onChange={(e) => this.setState({size: e.target.value})}
                            value={size}>
@@ -98,7 +98,7 @@ class StepsDemo extends React.Component {
                 <Step title="Waiting" description="This is a description."/>
               </Steps>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='带图标'>
+            <Card bordered={false} className='card-item' title='带图标'>
               <Steps>
                 <Step status="finish" title="Login" icon={<Icon type="user"/>}/>
                 <Step status="finish" title="Verification"
@@ -108,7 +108,7 @@ class StepsDemo extends React.Component {
                 <Step status="wait" title="Done" icon={<Icon type="smile-o"/>}/>
               </Steps>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='点状步骤条'>
+            <Card bordered={false} className='card-item' title='点状步骤条'>
               <Steps progressDot current={2}>
                 <Step title="Finished" description="This is a description."/>
                 <Step title="In Progress" description="This is a description."/>
@@ -123,10 +123,6 @@ class StepsDemo extends React.Component {
 }
 
 const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
-  },
   stepsContent: {
     minHeight: '200px',
     margin: '16px 0',

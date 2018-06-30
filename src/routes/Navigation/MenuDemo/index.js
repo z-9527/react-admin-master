@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Menu, Icon, Switch} from 'antd'
 import CustomBreadcrumb from "../../../common/CustomBreadcrumb/index";
+import TypingCard from '../../../common/TypingCard'
 
 class MenuDemo extends React.Component {
   state = {
@@ -21,15 +22,14 @@ class MenuDemo extends React.Component {
   }
 
   render() {
+    const cardContent = ' 导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。'
     return (
       <div>
         <CustomBreadcrumb arr={['导航','导航菜单']}/>
-        <Card title='何时使用' hoverable style={{marginBottom: 5}}>
-          导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
-        </Card>
+        <TypingCard source={cardContent} height={164}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Row type='flex' align='middle'>
                 <Col span={12}>
                   <Menu mode="inline" style={{width: 200}}>
@@ -54,9 +54,9 @@ class MenuDemo extends React.Component {
                 </Col>
               </Row>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Row type='flex' align='middle'>
-                <Col span={12}>
+                <Col span={12} className='card-item'>
                   <Menu
                     mode="inline"
                     style={{width: 200}}
@@ -102,7 +102,7 @@ class MenuDemo extends React.Component {
                 </Menu.SubMenu>
               </Menu>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <p style={{paddingLeft: 15}}>
                 <Switch size='small' onChange={this.changeMode}/> Change Mode &emsp;
                 <Switch size='small' onChange={this.changeTheme}/> Change Theme
@@ -138,13 +138,9 @@ class MenuDemo extends React.Component {
 }
 
 const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
-  },
   Item:{
     height:190,
-    margin: '10px 0',
+    marginBottom:10,
     borderRadius: 3,
   }
 }

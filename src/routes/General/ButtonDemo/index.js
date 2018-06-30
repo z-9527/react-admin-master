@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Row, Col, Card, Icon, Radio, Dropdown, Menu, message} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-
+import TypingCard from '../../../common/TypingCard'
 
 class ButtonDemo extends React.Component {
   state = {
@@ -28,21 +28,20 @@ class ButtonDemo extends React.Component {
         <Menu.Item key="3">3rd item</Menu.Item>
       </Menu>
     );
+    const cardContent = `标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。`
     return (
       <div>
         <CustomBreadcrumb arr={['基本','按钮']}/>
-        <Card hoverable bordered={false} style={{marginBottom: 5}} title='何时使用'>
-          标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
-        </Card>
+        <TypingCard source={cardContent} />
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Button type="primary">Primary</Button>&emsp;
               <Button>Default</Button>&emsp;
               <Button type="dashed">Dashed</Button>&emsp;
               <Button type="danger">Danger</Button>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Radio.Group value={this.state.size} onChange={this.handleSizeChange}>
                 <Radio.Button value="large">Large</Radio.Button>
                 <Radio.Button value="default">Default</Radio.Button>
@@ -67,7 +66,7 @@ class ButtonDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <p>
                 <Button type="primary" shape="circle" icon="search"/>&emsp;
                 <Button type="primary" icon="search">Search</Button>&emsp;
@@ -81,14 +80,14 @@ class ButtonDemo extends React.Component {
                 <Button type="dashed" icon="search">Search</Button>
               </p>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Button type="primary">primary</Button>&emsp;
               <Button>secondary</Button>&emsp;
               <Dropdown overlay={menu}>
                 <Button>Button<Icon type='down'/></Button>
               </Dropdown>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <p>
                 <Button loading type='primary'>Loading</Button>&emsp;
                 <Button type='primary' loading shape='circle'/>
@@ -103,13 +102,6 @@ class ButtonDemo extends React.Component {
         </Row>
       </div>
     )
-  }
-}
-
-const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
   }
 }
 

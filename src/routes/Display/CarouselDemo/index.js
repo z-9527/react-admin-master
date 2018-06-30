@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Carousel} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 import './css/style.css'
 import 'animate.css'
 
@@ -44,17 +45,15 @@ class CarouselDemo extends React.Component {
   }
   render(){
     const { current} = this.state
-    return (
-      <div>
-        <CustomBreadcrumb arr={['显示','轮播图']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用'>
-          <ul style={{listStyle: 'inside circle'}}>
+    const cardContent = `<ul class="card-ul">
             <li>当有一组平级的内容</li>
             <li>当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现</li>
             <li>常用于一组图片或卡片轮播</li>
-          </ul>
-        </Card>
+          </ul>`
+    return (
+      <div>
+        <CustomBreadcrumb arr={['显示','轮播图']}/>
+        <TypingCard source={cardContent} height={206}/>
         <Card title='基本用法'>
           <Carousel speed={100} arrows afterChange={(current)=>this.setState({current})} autoplay>
             <div>

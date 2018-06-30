@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Collapse} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const Panel = Collapse.Panel
 
@@ -19,26 +20,24 @@ const text2 = (
 
 class CollapseDemo extends React.Component {
   render(){
+    const cardContent = ` <ul class="card-ul">
+            <li>对复杂区域进行分组和隐藏，保持页面的整洁</li>
+            <li>手风琴 是一种特殊的折叠面板，只允许单个内容区域展开</li>
+          </ul>`
     return (
       <div>
         <CustomBreadcrumb arr={['显示','折叠面板']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 10, lineHeight: '2em'}} title='何时使用'>
-          <ul style={{listStyle: 'inside circle'}}>
-            <li>对复杂区域进行分组和隐藏，保持页面的整洁</li>
-            <li>手风琴 是一种特殊的折叠面板，只允许单个内容区域展开</li>
-          </ul>
-        </Card>
+        <TypingCard source={cardContent} height={178}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='基本用法'>
+            <Card bordered={false} className='card-item' title='基本用法'>
               <Collapse defaultActiveKey={['1']}>
                 <Panel header="This is panel header 1" key="1"><p>{text}</p></Panel>
                 <Panel header="This is panel header 2" key="2"><p>{text}</p></Panel>
                 <Panel header="This is panel header 3" key="3"><p>{text}</p></Panel>
               </Collapse>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='简洁风格-无边框'>
+            <Card bordered={false} className='card-item' title='简洁风格-无边框'>
               <Collapse defaultActiveKey={['1']} bordered={false}>
                 <Panel header="This is panel header 1" key="1">{text2}</Panel>
                 <Panel header="This is panel header 2" key="2">{text2}</Panel>
@@ -47,14 +46,14 @@ class CollapseDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem} title='手风琴-每次只打开一个tab'>
+            <Card bordered={false} className='card-item' title='手风琴-每次只打开一个tab'>
               <Collapse defaultActiveKey={['2']} accordion>
                 <Panel header="This is panel header 1" key="1"><p>{text}</p></Panel>
                 <Panel header="This is panel header 2" key="2"><p>{text}</p></Panel>
                 <Panel header="This is panel header 3" key="3"><p>{text}</p></Panel>
               </Collapse>
             </Card>
-            <Card bordered={false} style={styles.colItem} title='自定义面板'>
+            <Card bordered={false} className='card-item' title='自定义面板'>
               <Collapse defaultActiveKey={['1']} bordered={false}>
                 <Panel header="This is panel header 1" key="1" style={styles.customPanelStyle}><p>{text}</p></Panel>
                 <Panel header="This is panel header 2" key="2" style={styles.customPanelStyle}><p>{text}</p></Panel>

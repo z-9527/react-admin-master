@@ -3,6 +3,7 @@ import {Card, Button} from 'antd'
 import Shuffle from 'shufflejs'
 import 'animate.css'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const animations = [
   {
@@ -88,11 +89,8 @@ class AnimationDemo extends React.Component{
     return (
       <div>
         <CustomBreadcrumb arr={['其它','动画']}/>
-        <Card title='何时使用' hoverable style={{marginBottom: 15}} bordered={false}>
-          当需要动态效果，如过渡、鼠标悬浮等。
-          本页面用到了animation.css库和shufflejs库
-        </Card>
-        <Card>
+        <TypingCard source='当需要动态效果，如过渡、鼠标悬浮等。本页面用到了animation.css库和shufflejs库'/>
+        <Card bordered={false}>
           <p>
             <Button style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter()}>All</Button>
             <Button style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter('Entrances')}>Entrances</Button>

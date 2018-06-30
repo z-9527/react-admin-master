@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, Popconfirm, Button, Icon, Table, Divider, BackTop, Affix, Anchor, Form, InputNumber, Input} from 'antd'
 import axios from 'axios'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 const columns = [
   {
@@ -518,23 +519,21 @@ class TableDemo extends React.Component {
         }),
       };
     });
+    const cardContent = `<ul class="card-ul">
+            <li>当有大量结构化的数据需要展现时</li>
+            <li>标当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时</li>
+          </ul>`
     return (
       <div>
         <CustomBreadcrumb arr={['显示', '表格']}/>
-        <Card hoverable bordered={false}
-              style={{marginBottom: 15, lineHeight: '2em'}} title='何时使用' id='howUse'>
-          <ul style={{listStyle: 'inside circle'}}>
-            <li>当有大量结构化的数据需要展现时</li>
-            <li>标当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时</li>
-          </ul>
-        </Card>
-        <Card bordered={false} title='基本用法' style={{marginBottom: 15}} id='basicUsage'>
+        <TypingCard id='howUse' source={cardContent} height={178}/>
+        <Card bordered={false} title='基本用法' style={{marginBottom: 10}} id='basicUsage'>
           <Table dataSource={data} columns={columns} style={styles.tableStyle}/>
         </Card>
-        <Card bordered={false} title='可选择' style={{marginBottom: 15, minHeight: 762}} id='select'>
+        <Card bordered={false} title='可选择' style={{marginBottom: 10, minHeight: 762}} id='select'>
           <Table rowSelection={rowSelection} dataSource={data2} columns={columns2} style={styles.tableStyle}/>
         </Card>
-        <Card bordered={false} title='排序和筛选' style={{marginBottom: 15, minHeight: 400}} id='filterOrSort'>
+        <Card bordered={false} title='排序和筛选' style={{marginBottom: 10, minHeight: 400}} id='filterOrSort'>
           <p>
             <Button onClick={() => this.setSort('age')}>年龄排序</Button>&emsp;
             <Button onClick={() => this.setSort('name')}>人名排序</Button>&emsp;
@@ -543,7 +542,7 @@ class TableDemo extends React.Component {
           </p>
           <Table dataSource={data3} columns={columns3} style={styles.tableStyle} onChange={this.handleChange}/>
         </Card>
-        <Card bordered={false} title='远程加载数据' style={{marginBottom: 15, minHeight: 762}} id='remoteLoading'>
+        <Card bordered={false} title='远程加载数据' style={{marginBottom: 10, minHeight: 762}} id='remoteLoading'>
           <Table rowKey={record => record.login.uuid}
                  loading={this.state.loading}
                  dataSource={this.state.data4}
@@ -551,15 +550,15 @@ class TableDemo extends React.Component {
                  onChange={this.handleTableChange}
                  columns={columns4} style={styles.tableStyle}/>u
         </Card>
-        <Card bordered={false} title='可展开' style={{marginBottom: 15, minHeight: 440}} id='unfold'>
+        <Card bordered={false} title='可展开' style={{marginBottom: 10, minHeight: 440}} id='unfold'>
           <Table dataSource={data5} columns={columns5} style={styles.tableStyle}
                  expandedRowRender={record => <p style={{margin: 0}}>{record.description}</p>}/>
         </Card>
-        <Card bordered={false} title='固定头和列' style={{marginBottom: 15, minHeight: 440}} id='fixed'>
+        <Card bordered={false} title='固定头和列' style={{marginBottom: 10, minHeight: 440}} id='fixed'>
           <Table dataSource={data6} columns={columns6} style={styles.tableStyle}
                  scroll={{x: 1500, y: 500}}/>
         </Card>
-        <Card bordered={false} title='可编辑的表格' style={{marginBottom: 15, minHeight: 440}} id='editTable'>
+        <Card bordered={false} title='可编辑的表格' style={{marginBottom: 10, minHeight: 440}} id='editTable'>
           <p>
             <Button onClick={this.handleAdd}>添加行</Button>
           </p>

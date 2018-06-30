@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Menu, Row, Col, Dropdown, Icon, message, Button} from 'antd'
 import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import TypingCard from '../../../common/TypingCard'
 
 
 class DropdownDemo extends React.Component {
@@ -30,20 +31,19 @@ class DropdownDemo extends React.Component {
         </Menu.SubMenu>
       </Menu>
     )
+    const cardContent = '当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。'
     return (
       <div>
         <CustomBreadcrumb arr={['导航','下拉菜单']}/>
-        <Card title='何时使用' hoverable style={{marginBottom: 5}}>
-          当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。
-        </Card>
+        <TypingCard source={cardContent}/>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Dropdown overlay={menu}><a>hover me <Icon type='down'/></a></Dropdown>&emsp;
               <Dropdown overlay={menu}><Button>Button<Icon type='down'/></Button></Dropdown>&emsp;
               <Dropdown overlay={menu} trigger={['click']}><a>click me <Icon type='down'/></a></Dropdown>&emsp;
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Dropdown overlay={menu2} trigger={['click']}>
                 <a href="">click menu <Icon type="down"/></a>
               </Dropdown>&emsp;&emsp;
@@ -53,11 +53,11 @@ class DropdownDemo extends React.Component {
             </Card>
           </Col>
           <Col span={12}>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <Dropdown overlay={menu2}><a href="">Cascading menu <Icon type="down"/></a></Dropdown>&emsp;&emsp;
               <Dropdown overlay={menu2}><Button>Cascading menu <Icon type="down"/></Button></Dropdown>
             </Card>
-            <Card bordered={false} style={styles.colItem}>
+            <Card bordered={false} className='card-item'>
               <p>
                 <Dropdown overlay={menu} placement="bottomLeft"><Button>bottomLeft</Button></Dropdown>&emsp;
                 <Dropdown overlay={menu} placement="bottomCenter"><Button>bottomCenter</Button></Dropdown>&emsp;
@@ -73,13 +73,6 @@ class DropdownDemo extends React.Component {
         </Row>
       </div>
     )
-  }
-}
-
-const styles = {
-  colItem: {
-    borderRadius: 3,
-    margin: '10px 0'
   }
 }
 
