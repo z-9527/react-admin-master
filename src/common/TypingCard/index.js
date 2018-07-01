@@ -12,7 +12,7 @@ class TypingCard extends React.Component {
     const typing = new Typing({
       source:this.source,
       output:this.output,
-      delay:100
+      delay:30
     })
     typing.start()
   }
