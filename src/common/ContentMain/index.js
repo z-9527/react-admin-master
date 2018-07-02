@@ -32,6 +32,7 @@ const NotificationDemo = AsyncComponent(()=>import('../../routes/Feedback/Notifi
 
 //其它
 const AnimationDemo = AsyncComponent(()=>import('../../routes/Other/AnimationDemo/index'))
+const GalleryDemo = AsyncComponent(()=>import('../../routes/Other/GalleryDemo/index'))
 //关于
 
 
@@ -70,6 +71,7 @@ class ContentMain extends React.Component{
           <Route exact path='/home/feedback/spin' component={SpinDemo}/>
 
           <Route exact path='/home/other/animation' component={AnimationDemo}/>
+          <Route exact path='/home/other/gallery' component={GalleryDemo}/>
 
           <Redirect exact from='/' to='/home'/>
         </Switch>

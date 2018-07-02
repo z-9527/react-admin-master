@@ -71,6 +71,7 @@ const menus = [
     key: '/home/other',
     subs:[
       {key: '/home/other/animation', title: '动画', icon: '',},
+      {key: '/home/other/gallery', title: '画廊', icon: '',},
     ]
   },
   {
