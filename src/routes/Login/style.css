@@ -4,6 +4,65 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background:#666;
     z-index: 99;
+    /*background-color: #f3f3f3;*/
 }
+.login-page .container{
+    position: relative;
+    margin: 150px auto 0;
+    width:400px;
+    height: 350px;
+    background-color: #f0f8ff;;
+}
+.container .login-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px 40px 15px 40px;
+}
+.container .login-box .owl{
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    margin-left: -111px;
+    width: 211px;
+    height: 108px;
+    background-image: url("./img/owl-login.png");
+}
+.owl .hand{
+    position: absolute;
+    left: 14px;
+    bottom: -8px;
+    width: 34px;
+    height: 34px;
+    border-radius: 40px;
+    background-color: #472d20;
+    transition: .3s ease-out;
+    transform: scaleY(0.6);
+}
+.owl .hand.hand-left{
+    left: 170px;
+}
+
+#login-page .ant-input{
+    outline: none;
+    border:none;
+    box-shadow: none;
+}
+#login-page .ant-input-group-addon{
+    background-color: #6a7989;
+    width: 50px;
+    border: none;
+}
+#login-page .iconfont{
+    color: #fff;
+}
+.container .login-box .bottom{
+    padding: 15px 0;
+    overflow: auto;
+}
+
+
