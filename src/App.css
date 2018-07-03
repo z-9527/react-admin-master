@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: sans-serif;
 }
+/*HeaderBar*/
 .trigger{
     font-size: 18px;
     line-height: 64px;
@@ -11,6 +12,20 @@ body {
 .trigger:hover{
     color: #1890ff;
 }
+.header-ul{
+    display: flex;
+    width: 200px;
+}
+.header-ul li {
+    flex-grow: 1;
+    text-align: center;
+}
+.header-ul>li img{
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+}
+
 #page .card-item{
     margin-bottom: 10px;
     border-radius: 3px;

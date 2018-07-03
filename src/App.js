@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Layout, Icon} from 'antd'
+import {Layout} from 'antd'
 import SiderNav from './common/SiderNav'
 import ContentMain from './common/ContentMain'
+import HeaderBar from './common/HeaderBar'
 import './App.css'
 
 const {Sider, Header, Content, Footer} = Layout
@@ -12,6 +13,7 @@ class App extends Component {
   }
 
   toggle = () => {
+    // console.log(this)  状态提升后，到底是谁调用的它
     this.setState({
       collapsed: !this.state.collapsed
     })
@@ -30,10 +32,7 @@ class App extends Component {
           </Sider>
           <Layout>
             <Header style={{background: '#fff', padding: '0 16px'}}>
-              <Icon
-                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                className='trigger'
-                onClick={this.toggle}/>
+              <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
             </Header>
             <Content style={{margin: '16px'}}>
               <ContentMain/>

@@ -4,6 +4,9 @@ import AsyncComponent from '../../utils/AsyncComponent'
 
 const Home = AsyncComponent(()=>import('../../routes/Home/index'))
 
+//登录页面
+const Login = AsyncComponent(()=>import('../../routes/Login/index'))
+
 //基本组件Demo
 const ButtonDemo = AsyncComponent(()=>import('../../routes/General/ButtonDemo/index'))
 const IconDemo = AsyncComponent(()=>import('../../routes/General/IconDemo/index'))
@@ -48,6 +51,8 @@ class ContentMain extends React.Component{
       <div>
         <Switch>
           <Route exact path='/home' component={Home}/>
+
+          <Route exact path='/login' component={Login}/>
 
           <Route exact path='/home/general/button' component={ButtonDemo}/>
           <Route exact path='/home/general/icon' component={IconDemo}/>
