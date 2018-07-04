@@ -16,7 +16,7 @@
 		}else{
 			this.options.id = options;
 		}
-		
+
 		this.options.numArr = "0,1,2,3,4,5,6,7,8,9".split(",");
 		this.options.letterArr = getAllLetter();
 
@@ -27,12 +27,11 @@
 	GVerify.prototype = {
 		/**版本号**/
 		version: '1.0.0',
-		
+
 		/**初始化方法**/
 		_init: function() {
 			var con = document.getElementById(this.options.id);
 			var canvas = document.createElement("canvas");
-			console.log(con.offsetHeight)
 			this.options.width = con.offsetWidth > 0 ? con.offsetWidth : "100";
 			this.options.height = con.offsetHeight > 0 ? con.offsetHeight : "30";
 			canvas.id = this.options.canvasId;
@@ -46,7 +45,7 @@
 				parent.refresh();
 			}
 		},
-		
+
 		/**生成验证码**/
 		refresh: function() {
 			this.options.code = "";
@@ -56,7 +55,7 @@
 			}else{
 				return;
 			}
-			
+
 			ctx.textBaseline = "middle";
 
 			ctx.fillStyle = randomColor(180, 240);
@@ -74,7 +73,7 @@
 				var txt = txtArr[randomNum(0, txtArr.length)];
 				this.options.code += txt;
 				ctx.font = randomNum(this.options.height/2, this.options.height) + 'px SimHei'; //随机生成字体大小
-				ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色		
+				ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色
 				ctx.shadowOffsetX = randomNum(-3, 3);
 				ctx.shadowOffsetY = randomNum(-3, 3);
 				ctx.shadowBlur = randomNum(-3, 3);
@@ -106,7 +105,7 @@
 				ctx.fill();
 			}
 		},
-		
+
 		/**验证验证码**/
 		validate: function(code){
 			var code = code.toLowerCase();

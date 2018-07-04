@@ -12,7 +12,7 @@
     position: relative;
     margin: 150px auto 0;
     width:400px;
-    height: 350px;
+    height: 330px;
     background-color: #f0f8ff;;
 }
 .container .login-box{
@@ -46,6 +46,29 @@
 .owl .hand.hand-left{
     left: 170px;
 }
+.owl .arms-box{
+    position: absolute;
+    top: 58px;
+    height: 41px;
+    width: 100%;
+    overflow: hidden;
+}
+.owl .arms{
+    position: absolute;
+    top: 40px;
+    width: 40px;
+    height: 65px;
+    transition: 0.3s ease-out;
+    background-image: url("./img/owl-login-arm.png");
+}
+.owl .arms-left{
+    left: 158px;
+    transform: rotate(20deg) scaleX(-1);
+}
+.owl .arms-right{
+    left: 20px;
+    transform: rotate(-20deg);
+}
 
 #login-page .ant-input{
     outline: none;
@@ -54,15 +77,23 @@
 }
 #login-page .ant-input-group-addon{
     background-color: #6a7989;
-    width: 50px;
+    padding:0;
     border: none;
 }
 #login-page .iconfont{
+    display: inline-block;
     color: #fff;
+    width: 50px;
+    transition: all .3s;
 }
 .container .login-box .bottom{
     padding: 15px 0;
-    overflow: auto;
+    text-align: right;
 }
-
+.login-box .bottom .register{
+     color: #999;
+ }
+.login-box .bottom .register:hover{
+    cursor: pointer;
+}
 
