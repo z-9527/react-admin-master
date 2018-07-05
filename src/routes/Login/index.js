@@ -27,16 +27,18 @@ class Login extends React.Component {
         <div className='container'>
           <div className='login-box'>
             <div className='owl'>
-              <div className='hand-left hand' style={focusItem === 1 ? styles.focusHandLeft:{}}/>
-              <div className='hand-right hand' style={focusItem === 1 ? styles.focusHandRight:{}}/>
+              <div className='hand-left hand' style={focusItem === 1 ? styles.focusHandLeft : {}}/>
+              <div className='hand-right hand' style={focusItem === 1 ? styles.focusHandRight : {}}/>
               <div className='arms-box'>
-                <div className='arms arms-left' style={focusItem === 1 ? styles.focusArmsLeft:{}}/>
-                <div className='arms arms-right' style={focusItem === 1 ? styles.focusArmsRight:{}}/>
+                <div className='arms arms-left' style={focusItem === 1 ? styles.focusArmsLeft : {}}/>
+                <div className='arms arms-right' style={focusItem === 1 ? styles.focusArmsRight : {}}/>
               </div>
             </div>
             <Form>
               <Form.Item>
-                {getFieldDecorator('username', {})(
+                {getFieldDecorator('username', {
+                  rules: [{required: true, message: '请输入用户名'}]
+                })(
                   <Input
                     addonBefore={<span className='iconfont icon-User'
                                        style={focusItem === 0 ? styles.focus : {}}/>}
@@ -46,16 +48,32 @@ class Login extends React.Component {
                 )}
               </Form.Item>
               <Form.Item>
-                {getFieldDecorator('password', {})(
+                {getFieldDecorator('password', {
+                  rules: [{required: true, message: '请输入密码'}]
+                })(
                   <Input addonBefore={<span className='iconfont icon-suo1'
                                             style={focusItem === 1 ? styles.focus : {}}/>}
+                         type='password'
                          onFocus={() => this.setState({focusItem: 1})}
                          onBlur={() => this.setState({focusItem})}
                          size='large'/>
                 )}
               </Form.Item>
               <Form.Item>
-                {getFieldDecorator('verification', {})(
+                {getFieldDecorator('verification', {
+                  validateFirst: true,
+                  rules: [
+                    {required: true, message: '请输入验证码'},
+                    {
+                      validator: (rule, value, callback) => {
+                        if(value.length>=4&&!this.verifyCode.validate(value)){
+                          callback('验证码错误')
+                        }
+                        callback()
+                      }
+                    }
+                  ]
+                })(
                   <Row gutter={8}>
                     <Col span={16}>
                       <Input addonBefore={<span className='iconfont icon-securityCode-b'
@@ -87,16 +105,16 @@ const styles = {
     transform: 'scale(0.6)',
     width: 40
   },
-  focusHandLeft:{
-    transform:'translateX(-42px) translateY(-15px) scale(0.7)',
+  focusHandLeft: {
+    transform: 'translateX(-42px) translateY(-15px) scale(0.7)',
   },
-  focusHandRight:{
-    transform:'translateX(42px) translateY(-15px) scale(0.7)',
+  focusHandRight: {
+    transform: 'translateX(42px) translateY(-15px) scale(0.7)',
   },
-  focusArmsLeft:{
+  focusArmsLeft: {
     transform: 'translateY(-40px) translateX(-40px) scaleX(-1)'
   },
-  focusArmsRight:{
+  focusArmsRight: {
     transform: 'translateY(-40px) translateX(40px)'
   }
 }

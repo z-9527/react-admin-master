@@ -1,5 +1,8 @@
 .login-page{
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     width: 100%;
@@ -10,12 +13,11 @@
 }
 .login-page .container{
     position: relative;
-    margin: 150px auto 0;
     width:400px;
     height: 330px;
     background-color: #f0f8ff;;
 }
-.container .login-box{
+#login-page .container .login-box{
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +25,7 @@
     height: 100%;
     padding: 40px 40px 15px 40px;
 }
-.container .login-box .owl{
+#login-page .container .login-box .owl{
     position: absolute;
     top: -100px;
     left: 50%;
@@ -32,7 +34,7 @@
     height: 108px;
     background-image: url("./img/owl-login.png");
 }
-.owl .hand{
+#login-page .owl .hand{
     position: absolute;
     left: 14px;
     bottom: -8px;
@@ -43,17 +45,17 @@
     transition: .3s ease-out;
     transform: scaleY(0.6);
 }
-.owl .hand.hand-left{
+#login-page .owl .hand.hand-left{
     left: 170px;
 }
-.owl .arms-box{
+#login-page .owl .arms-box{
     position: absolute;
     top: 58px;
     height: 41px;
     width: 100%;
     overflow: hidden;
 }
-.owl .arms{
+#login-page .owl .arms{
     position: absolute;
     top: 40px;
     width: 40px;
@@ -61,11 +63,11 @@
     transition: 0.3s ease-out;
     background-image: url("./img/owl-login-arm.png");
 }
-.owl .arms-left{
+#login-page .owl .arms-left{
     left: 158px;
     transform: rotate(20deg) scaleX(-1);
 }
-.owl .arms-right{
+#login-page .owl .arms-right{
     left: 20px;
     transform: rotate(-20deg);
 }
@@ -86,14 +88,53 @@
     width: 50px;
     transition: all .3s;
 }
-.container .login-box .bottom{
+#login-page .ant-form-item-with-help{
+    margin-bottom: 24px;
+}
+#login-page .ant-form-explain{
+    position: absolute;
+    z-index: 99;
+    left:110%;
+    top:0;
+    height: 40px;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #CFCFCF;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    line-height: 40px;
+    padding:0 15px;
+    color:rgba(0, 0, 0, 0.65);
+}
+#login-page .ant-form-explain:before{
+    content:'';
+    position: absolute;
+    left: -14px;
+    top:12px;
+    width: 0;
+    height: 0;
+    border-right: 14px solid #CFCFCF;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+#login-page .ant-form-explain:after{
+    content:'';
+    position: absolute;
+    left: -13px;
+    top:12px;
+    width: 0;
+    height: 0;
+    border-right: 14px solid #fff;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+#login-page .container .login-box .bottom{
     padding: 15px 0;
     text-align: right;
 }
-.login-box .bottom .register{
+#login-page .login-box .bottom .register{
      color: #999;
  }
-.login-box .bottom .register:hover{
+#login-page .login-box .bottom .register:hover{
     cursor: pointer;
 }
 
