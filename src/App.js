@@ -4,7 +4,7 @@ import SiderNav from './common/SiderNav'
 import ContentMain from './common/ContentMain'
 import HeaderBar from './common/HeaderBar'
 import './App.css'
-import './font/iconfont.css'
+import './assets/font/iconfont.css'
 
 const {Sider, Header, Content, Footer} = Layout
 

@@ -87,10 +87,10 @@ class FormDemo1 extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if(err){
-        message.error('请先填写正确的表单')
+        message.warning('请先填写正确的表单')
       } else {
         message.success('提交成功')
-        console.log(values)
+        // console.log(values)
       }
     });
   }

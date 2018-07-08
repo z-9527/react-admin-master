@@ -25,6 +25,14 @@ body {
     height: 35px;
     border-radius: 100px;
 }
+.menu{
+    line-height: 2em;
+    padding: 0 10px;
+}
+.menu-group li{
+    padding: 0 24px;
+    line-height: 2em;
+}
 
 #page .card-item{
     margin-bottom: 10px;

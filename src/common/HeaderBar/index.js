@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Badge } from 'antd'
+import { Icon, Badge,Dropdown,Menu } from 'antd'
 import screenfull from 'screenfull'
 import {inject,observer} from 'mobx-react'
 import {Link,withRouter} from 'react-router-dom'
@@ -37,11 +37,29 @@ class HeaderBar extends React.Component {
     const notLogin = (
       <div>
         <Link to={{pathname: '/login',state: { from: location }}} style={{color:'rgba(0, 0, 0, 0.65)'}}>登录</Link>&nbsp;
-        <img src="http://s.stu.126.net/res/images/headImg/small.jpg?c736f7606af92817871f1b78f94f42be" alt=""/>
+        <img src={require('../../assets/img/defaultUser.jpg')} alt=""/>
       </div>
     )
+    const menu = (
+      <Menu className='menu'>
+        <Menu.ItemGroup title='用户中心' className='menu-group'>
+          <Menu.Item>你好 - {appStore.loginUser.username}</Menu.Item>
+          <Menu.Item>个人信息</Menu.Item>
+          <Menu.Item><span onClick={()=>appStore.toggleLogin(false)}>退出登录</span></Menu.Item>
+        </Menu.ItemGroup>
+        <Menu.ItemGroup title='设置中心' className='menu-group'>
+          <Menu.Item>个人设置</Menu.Item>
+          <Menu.Item>系统设置</Menu.Item>
+        </Menu.ItemGroup>
+      </Menu>
+    )
+    const login = (
+      <Dropdown overlay={menu}>
+        <img src="http://cheng_haohao.oschina.io/reactadmin/static/media/b1.553c69e9.jpg" alt="" />
+      </Dropdown>
+    )
     return (
-      <div>
+      <div id='headerbar'>
         <Icon
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           className='trigger'
@@ -55,9 +73,7 @@ class HeaderBar extends React.Component {
               </Badge>
             </li>
             <li>
-              {
-                appStore.isLogin ? <img src="http://cheng_haohao.oschina.io/reactadmin/static/media/b1.553c69e9.jpg" alt="" />:notLogin
-              }
+              {appStore.isLogin ? login : notLogin}
             </li>
           </ul>
         </div>

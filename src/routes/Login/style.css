@@ -15,7 +15,6 @@
     position: relative;
     width:400px;
     height: 330px;
-    background-color: #f0f8ff;;
 }
 #login-page .container .login-box{
     position: absolute;
@@ -24,6 +23,15 @@
     width: 100%;
     height: 100%;
     padding: 40px 40px 15px 40px;
+    background-color: #f0f8ff;
+    transition: all 1s;
+    backface-visibility: hidden;
+}
+#login-page .container .login-box-leave{
+    transform:rotateY(180deg);
+}
+#login-page .container .login-box-active{
+    transform:rotateY(0deg);
 }
 #login-page .container .login-box .owl{
     position: absolute;
@@ -131,10 +139,15 @@
     padding: 15px 0;
     text-align: right;
 }
-#login-page .login-box .bottom .register{
+#login-page .login-box .bottom .registerBtn{
      color: #999;
  }
 #login-page .login-box .bottom .register:hover{
     cursor: pointer;
+}
+#login-page .login-box .bottom .gobackBtn{
+    float: left;
+    color: #999;
+    margin-top: 5px;
 }
 
