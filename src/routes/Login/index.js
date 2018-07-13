@@ -190,11 +190,11 @@ class RegisterForm extends React.Component {
     return (
       <div className={this.props.className}>
         <div className='owl'>
-          <div className='hand-left hand' style={focusItem === 1 ? styles.focusHandLeft : {}}/>
-          <div className='hand-right hand' style={focusItem === 1 ? styles.focusHandRight : {}}/>
+          <div className='hand-left hand' style={(focusItem === 1 || focusItem === 2) ? styles.focusHandLeft : {}}/>
+          <div className='hand-right hand' style={(focusItem === 1 || focusItem === 2) ? styles.focusHandRight : {}}/>
           <div className='arms-box'>
-            <div className='arms arms-left' style={focusItem === 1 ? styles.focusArmsLeft : {}}/>
-            <div className='arms arms-right' style={focusItem === 1 ? styles.focusArmsRight : {}}/>
+            <div className='arms arms-left' style={(focusItem === 1 || focusItem === 2) ? styles.focusArmsLeft : {}}/>
+            <div className='arms arms-right' style={(focusItem === 1 || focusItem === 2) ? styles.focusArmsRight : {}}/>
           </div>
         </div>
         <Form onSubmit={this.registerSubmit} className='registerSubmit'>
