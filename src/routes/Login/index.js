@@ -1,24 +1,26 @@
 import React from 'react'
-import {Form, Input, Button, Col, Row, message,Icon} from 'antd'
-import {withRouter} from 'react-router-dom'
+import { Form, Input, Button, Col, Row, message, notification } from 'antd'
+import { withRouter } from 'react-router-dom'
 import GVerify from '../../utils/gVerify'
 import './style.css'
-import {inject, observer} from "mobx-react/index";
+import { inject, observer } from 'mobx-react/index'
 
 @withRouter @inject('appStore') @observer @Form.create()
-class LoginForm extends React.Component{
+class LoginForm extends React.Component {
   state = {
     focusItem: -1,
   }
-  componentDidMount() {
-    this.verifyCode = new GVerify('v_container');
+
+  componentDidMount () {
+    this.verifyCode = new GVerify('v_container')
   }
-  componentWillUnmount() {
+
+  componentWillUnmount () {
     this.verifyCode = null
   }
+
   loginSubmit = (e) => {
-    e.preventDefault();
-    console.log(1)
+    e.preventDefault()
     this.setState({
       focusItem: -1
     })
@@ -37,7 +39,7 @@ class LoginForm extends React.Component{
           return
         } else {
           //检测密码是否错误
-          if (result.password !== values.password){
+          if (result.password !== values.password) {
             this.props.form.setFields({
               password: {
                 value: values.password,
@@ -48,16 +50,19 @@ class LoginForm extends React.Component{
           }
         }
 
-        this.props.appStore.toggleLogin(true,{username:values.username})
+        this.props.appStore.toggleLogin(true, {username: values.username})
 
         const {from} = this.props.location.state || {from: {pathname: '/'}}
         this.props.history.push(from)
       }
-    });
+    })
   }
-  register = ()=>{
+  register = () => {
+    this.props.setShowBox('register')
+    setTimeout(() => this.props.form.resetFields(), 500)
   }
-  render(){
+
+  render () {
     const {getFieldDecorator} = this.props.form
     const {focusItem} = this.state
     return (
@@ -76,10 +81,11 @@ class LoginForm extends React.Component{
               rules: [{required: true, message: '请输入用户名'}]
             })(
               <Input
+                placeholder='用户名'
                 addonBefore={<span className='iconfont icon-User'
                                    style={focusItem === 0 ? styles.focus : {}}/>}
                 onFocus={() => this.setState({focusItem: 0})}
-                onBlur={() => this.setState({focusItem:-1})}
+                onBlur={() => this.setState({focusItem: -1})}
                 size='large'/>
             )}
           </Form.Item>
@@ -87,12 +93,14 @@ class LoginForm extends React.Component{
             {getFieldDecorator('password', {
               rules: [{required: true, message: '请输入密码'}]
             })(
-              <Input addonBefore={<span className='iconfont icon-suo1'
-                                        style={focusItem === 1 ? styles.focus : {}}/>}
-                     type='password'
-                     onFocus={() => this.setState({focusItem: 1})}
-                     onBlur={() => this.setState({focusItem:-1})}
-                     size='large'/>
+              <Input
+                placeholder='密码'
+                addonBefore={<span className='iconfont icon-suo1'
+                                   style={focusItem === 1 ? styles.focus : {}}/>}
+                type='password'
+                onFocus={() => this.setState({focusItem: 1})}
+                onBlur={() => this.setState({focusItem: -1})}
+                size='large'/>
             )}
           </Form.Item>
           <Form.Item>
@@ -112,11 +120,13 @@ class LoginForm extends React.Component{
             })(
               <Row gutter={8}>
                 <Col span={16}>
-                  <Input addonBefore={<span className='iconfont icon-securityCode-b'
-                                            style={focusItem === 2 ? styles.focus : {}}/>}
-                         onFocus={() => this.setState({focusItem: 2})}
-                         onBlur={() => this.setState({focusItem:-1})}
-                         size='large'/>
+                  <Input
+                    placeholder='验证码'
+                    addonBefore={<span className='iconfont icon-securityCode-b'
+                                       style={focusItem === 2 ? styles.focus : {}}/>}
+                    onFocus={() => this.setState({focusItem: 2})}
+                    onBlur={() => this.setState({focusItem: -1})}
+                    size='large'/>
                 </Col>
                 <Col span={8}>
                   <div id='v_container' style={{height: 40}}/>
@@ -125,7 +135,7 @@ class LoginForm extends React.Component{
             )}
           </Form.Item>
           <div className='bottom'>
-            <span className='registerBtn' onClick={()=>this.props.setShowBox('register')}>注册</span>&emsp;
+            <span className='registerBtn' onClick={this.register}>注册</span>&emsp;
             <Button type='primary' htmlType="submit">登录</Button>
           </div>
         </Form>
@@ -135,14 +145,46 @@ class LoginForm extends React.Component{
 }
 
 @inject('appStore') @observer @Form.create()
-class RegisterForm extends React.Component{
+class RegisterForm extends React.Component {
   state = {
-    focusItem:-1
+    focusItem: -1
   }
-  registerSubmit = ()=>{
+  registerSubmit = (e) => {
+    e.preventDefault()
+    this.setState({
+      focusItem: -1
+    })
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        const users = this.props.appStore.users
+        // 检测用户名是否存在
+        const result = users.find(item => item.username === values.registerUsername)
+        if (result) {
+          this.props.form.setFields({
+            registerUsername: {
+              value: values.registerUsername,
+              errors: [new Error('用户名已存在')]
+            }
+          })
+          return
+        }
 
+        const obj = [...this.props.appStore.users, {
+          username: values.registerUsername,
+          password: values.registerPassword
+        }]
+        localStorage.setItem('users', JSON.stringify(obj))
+        this.props.appStore.initUsers()
+        message.success('注册成功')
+      }
+    })
   }
-  render(){
+  gobackLogin = () => {
+    this.props.setShowBox('login')
+    setTimeout(() => this.props.form.resetFields(), 500)
+  }
+
+  render () {
     const {getFieldDecorator} = this.props.form
     const {focusItem} = this.state
     return (
@@ -155,45 +197,73 @@ class RegisterForm extends React.Component{
             <div className='arms arms-right' style={focusItem === 1 ? styles.focusArmsRight : {}}/>
           </div>
         </div>
-        <Form onSubmit={this.registerSubmit}>
+        <Form onSubmit={this.registerSubmit} className='registerSubmit'>
           <Form.Item>
             {getFieldDecorator('registerUsername', {
-              rules: [{required: true, message: '请输入用户名'}]
+              validateFirst: true,
+              rules: [
+                {required: true, message: '用户名不能为空'},
+                {pattern: '^[^ ]+$', message: '不能输入空格'},
+              ]
             })(
               <Input
+                placeholder='用户名'
                 addonBefore={<span className='iconfont icon-User'
                                    style={focusItem === 0 ? styles.focus : {}}/>}
                 onFocus={() => this.setState({focusItem: 0})}
-                onBlur={() => this.setState({focusItem:-1})}
+                onBlur={() => this.setState({focusItem: -1})}
                 size='large'/>
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('registerPassword', {
-              rules: [{required: true, message: '请输入密码'}]
+              validateFirst: true,
+              rules: [
+                {required: true, message: '密码不能为空'},
+                {pattern: '^[^ ]+$', message: '密码不能有空格'}
+              ]
             })(
-              <Input addonBefore={<span className='iconfont icon-suo1'
-                                        style={focusItem === 1 ? styles.focus : {}}/>}
-                     type='password'
-                     onFocus={() => this.setState({focusItem: 1})}
-                     onBlur={() => this.setState({focusItem:-1})}
-                     size='large'/>
+              <Input
+                placeholder='密码'
+                addonBefore={<span className='iconfont icon-suo1'
+                                   style={focusItem === 1 ? styles.focus : {}}/>}
+                type='password'
+                onFocus={() => this.setState({focusItem: 1})}
+                onBlur={() => this.setState({focusItem: -1})}
+                size='large'/>
             )}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('confirmPassword', {
-              rules: [{required: true, message: '请输入密码'}]
+              validateFirst: true,
+              rules: [
+                {required: true, message: '请确认密码'},
+                {
+                  validator: (rule, value, callback) => {
+                    const {getFieldValue} = this.props.form
+                    if (!getFieldValue('registerPassword')) {
+                      callback('请先输入上面的密码')
+                    }
+                    if (value && value !== getFieldValue('registerPassword')) {
+                      callback('两次输入不一致！')
+                    }
+                    callback()
+                  }
+                }
+              ]
             })(
-              <Input addonBefore={<span className='iconfont icon-suo1'
-                                        style={focusItem === 2 ? styles.focus : {}}/>}
-                     type='password'
-                     onFocus={() => this.setState({focusItem: 2})}
-                     onBlur={() => this.setState({focusItem:-1})}
-                     size='large'/>
+              <Input
+                placeholder='确认密码'
+                addonBefore={<span className='iconfont icon-suo1'
+                                   style={focusItem === 2 ? styles.focus : {}}/>}
+                type='password'
+                onFocus={() => this.setState({focusItem: 2})}
+                onBlur={() => this.setState({focusItem: -1})}
+                size='large'/>
             )}
           </Form.Item>
           <div className='bottom'>
-            <span className='gobackBtn' onClick={()=>this.props.setShowBox('login')}>返回登录</span>&emsp;
+            <span className='gobackBtn' onClick={this.gobackLogin}>返回登录</span>&emsp;
             <Button type='primary' htmlType="submit">注册</Button>
           </div>
         </Form>
@@ -205,23 +275,36 @@ class RegisterForm extends React.Component{
 @withRouter @inject('appStore') @observer
 class Login extends React.Component {
   state = {
-    showBox:'login'
+    showBox: 'login'
   }
-  componentDidMount(){
+
+  componentDidMount () {
     this.props.appStore.initUsers()
-  }
-  toggleShowBox = (box)=>{
-    this.setState({
-      showBox:box
+    notification.open({
+      message: '初始登录',
+      duration: 10,
+      description: (<ul>
+        <li>账号：admin</li>
+        <li>密码：admin</li>
+      </ul>)
     })
   }
-  render() {
+
+  toggleShowBox = (box) => {
+    this.setState({
+      showBox: box
+    })
+  }
+
+  render () {
     const {showBox} = this.state
     return (
       <div className='login-page' id='login-page'>
         <div className='container'>
-          <LoginForm className={showBox==='login'?'login-box-active login-box':'login-box-leave login-box'} setShowBox={this.toggleShowBox}/>
-          <RegisterForm className={showBox==='register'?'login-box-active login-box':'login-box-leave login-box'} setShowBox={this.toggleShowBox}/>
+          <LoginForm className={showBox === 'login' ? 'login-box-active login-box' : 'login-box-leave login-box'}
+                     setShowBox={this.toggleShowBox}/>
+          <RegisterForm className={showBox === 'register' ? 'login-box-active login-box' : 'login-box-leave login-box'}
+                        setShowBox={this.toggleShowBox}/>
         </div>
       </div>
     )
