@@ -2,8 +2,8 @@ import React from 'react'
 import {Card, Button} from 'antd'
 import Shuffle from 'shufflejs'
 import 'animate.css'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 
 const animations = [
   {

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Card, Popconfirm, Button, Icon, Table, Divider, BackTop, Affix, Anchor, Form, InputNumber, Input} from 'antd'
 import axios from 'axios'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 
 const columns = [
   {

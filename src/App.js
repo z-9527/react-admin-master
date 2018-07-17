@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Layout} from 'antd'
-import SiderNav from './common/SiderNav'
-import ContentMain from './common/ContentMain'
-import HeaderBar from './common/HeaderBar'
+import SiderNav from './components/SiderNav'
+import ContentMain from './components/ContentMain'
+import HeaderBar from './components/HeaderBar'
 import './App.css'
 import './assets/font/iconfont.css'
 

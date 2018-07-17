@@ -2,8 +2,8 @@ import React from 'react'
 import {Card, Col, Row, Spin, Icon, Alert, Switch, Button} from 'antd'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 
 class SpinDemo extends React.Component {
   state = {

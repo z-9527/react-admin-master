@@ -1,10 +1,10 @@
 import React from 'react'
 import {Card, Alert, Divider, Select, Steps, Input, Button, Form,Icon} from 'antd'
 import {inject,observer} from 'mobx-react'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import './css/formDeni2.css'
 import {digitUppercase} from '../../../utils/utils'
-import TypingCard from '../../../common/TypingCard'
+import TypingCard from '../../../components/TypingCard'
 
 const { Step } = Steps;
 const { Option } = Select;

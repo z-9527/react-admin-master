@@ -1,7 +1,7 @@
 import React from 'react'
 import Shuffle from 'shufflejs'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 import {Card,Button,Modal} from 'antd'
 
 class GalleryDemo extends React.Component{

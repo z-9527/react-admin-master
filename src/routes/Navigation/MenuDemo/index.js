@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Menu, Icon, Switch} from 'antd'
-import CustomBreadcrumb from "../../../common/CustomBreadcrumb/index";
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from "../../../components/CustomBreadcrumb/index";
+import TypingCard from '../../../components/TypingCard'
 
 class MenuDemo extends React.Component {
   state = {
