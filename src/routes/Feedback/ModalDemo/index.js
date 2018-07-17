@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Button, Modal, Tooltip} from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb'
+import TypingCard from '../../../components/TypingCard'
 
 class ModalDemo extends React.Component {
   state = {

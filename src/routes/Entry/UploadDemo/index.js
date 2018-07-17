@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Icon, Upload, message, Button, Modal} from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb'
+import TypingCard from '../../../components/TypingCard'
 
 const Dragger = Upload.Dragger;
 

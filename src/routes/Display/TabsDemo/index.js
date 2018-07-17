@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Col, Row, Icon, Tabs, message, Radio} from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 
 const TabPane = Tabs.TabPane
 const panes = [

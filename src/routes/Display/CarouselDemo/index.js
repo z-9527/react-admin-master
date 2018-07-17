@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Carousel} from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 import './css/style.css'
 import 'animate.css'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Menu, Row, Col, Dropdown, Icon, message, Button} from 'antd'
-import CustomBreadcrumb from '../../../common/CustomBreadcrumb/index'
-import TypingCard from '../../../common/TypingCard'
+import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
+import TypingCard from '../../../components/TypingCard'
 
 
 class DropdownDemo extends React.Component {
