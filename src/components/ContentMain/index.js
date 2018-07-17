@@ -6,6 +6,7 @@ const Home = AsyncComponent(()=>import('../../routes/Home/index'))
 
 //登录页面
 const Login = AsyncComponent(()=>import('../../routes/Login/index'))
+// const Login = AsyncComponent(()=>import('../../routes/Login2/index'))
 
 //基本组件Demo
 const ButtonDemo = AsyncComponent(()=>import('../../routes/General/ButtonDemo/index'))
