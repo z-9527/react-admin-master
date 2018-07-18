@@ -25,7 +25,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 100px 40px 40px 40px;
+    padding: 90px 40px 40px 40px;
     backface-visibility: hidden;
     background: linear-gradient(230deg, rgba(53, 57, 74, 0) 0%, rgb(0, 0, 0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(53, 57, 74, 0)', endColorstr='rgb(0, 0, 0)',GradientType=1 );
@@ -38,14 +38,35 @@
 #login-page .hiddenBox{
     transform:rotateY(180deg);
 }
-
-
-
+#login-page .loginBtn{
+    padding: 10px 50px;
+    border: 2px solid #4FA1D9;
+    border-radius: 50px;
+    background: transparent;
+    font-size: 11px;
+    color: #4FA1D9;
+    transition: all .2s;
+}
+#login-page .loginBtn:hover{
+    color: white;
+    background: #4FA1D9;
+    cursor: pointer;
+}
 #login-page .title{
     height: 60px;
     color:#D3D7F7;
     font-size: 16px;
+    margin-bottom: 0;
 }
+#login-page .footer{
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    width: 250px;
+    color: #D3D7F7;
+    font-size: 10px;
+}
+
 
 /*覆盖antd的默认样式*/
 #login-page input{
@@ -66,9 +87,22 @@
     display: inline-block;
     width: 30px;
     transition: all .3s;
+    opacity: 0.6;
 }
 #login-page .ant-form-item{
     margin-bottom: 10px;
+}
+#login-page .ant-form-explain{
+    position: absolute;
+    z-index: 99;
+    left:110%;
+    top:0;
+    height: 40px;
+    border: 1px solid #D3D7F7;
+    box-shadow: -2px 2px 2px rgba(0,0,0,.3);
+    line-height: 40px;
+    padding:0 15px;
+    color:#D3D7F7;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        canvas{
+        }
+        .test{
+            width: 300px;
+            height: 150px;
+            margin: 150px auto;
+            background: #000;
+        }
+    </style>
 </head>
 <body>
-<input type="text" placeholder="test">
-<input type="password" placeholder="test">
+<div style="display:none"></div>
+<div class="test">
+    <canvas id="canvas"></canvas>
+</div>
+<script>
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    ctx.strokeStyle = '#fff'
+    ctx.beginPath()
+    ctx.moveTo(20,75)
+    ctx.lineTo(35,50)
+    ctx.lineTo(75,50)
+    ctx.lineTo(75,100)
+    ctx.lineTo(35,100)
+    ctx.closePath()
+    ctx.stroke();
+</script>
 </body>
 </html>
