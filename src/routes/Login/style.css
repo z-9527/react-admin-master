@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background:#666;
+    /*background:#666;*/
     z-index: 99;
 }
 
@@ -46,6 +46,19 @@
     font-size: 11px;
     color: #4FA1D9;
     transition: all .2s;
+}
+#login-page .bottom{
+    display: flex;
+    height: 42px;
+    justify-content: space-between;
+    align-items: center;
+}
+#login-page .registerBtn{
+    color: #D3D7F7;
+}
+#login-page .registerBtn:hover{
+    color: #4FA1D9;
+    cursor: pointer;
 }
 #login-page .loginBtn:hover{
     color: white;
@@ -97,12 +110,8 @@
     z-index: 99;
     left:110%;
     top:0;
-    height: 40px;
-    border: 1px solid #D3D7F7;
-    box-shadow: -2px 2px 2px rgba(0,0,0,.3);
-    line-height: 40px;
-    padding:0 15px;
-    color:#D3D7F7;
+    height: 41px;
+    /*box-shadow: -2px 2px 2px rgba(0,0,0,.3);*/
 }
 /*更改谷歌浏览器input背景*/
 input:-webkit-autofill,
