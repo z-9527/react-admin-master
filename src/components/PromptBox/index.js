@@ -29,9 +29,10 @@ class Promptbox extends React.Component{
     ctx.fillText(this.props.info, 20, 20);
   }
   render(){
+    console.log(this.props.info,100)
     return (
       <div>
-        <canvas height='41' width={this.props.width} ref={el=>this.canvas=el}/>
+        <canvas key={this.props.info} height='41' width={this.props.width} ref={el=>this.canvas=el}/>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import { Icon, Badge,Dropdown,Menu } from 'antd'
 import screenfull from 'screenfull'
 import {inject,observer} from 'mobx-react'
 import {Link,withRouter} from 'react-router-dom'
+import {isAuthenticated} from '../../utils/Session'
 
 
 //withRouter一定要写在前面，不然路由变化不会反映到props中去
@@ -43,7 +44,7 @@ class HeaderBar extends React.Component {
     const menu = (
       <Menu className='menu'>
         <Menu.ItemGroup title='用户中心' className='menu-group'>
-          <Menu.Item>你好 - {appStore.loginUser.username}</Menu.Item>
+          <Menu.Item>你好 - {isAuthenticated()}</Menu.Item>
           <Menu.Item>个人信息</Menu.Item>
           <Menu.Item><span onClick={()=>appStore.toggleLogin(false)}>退出登录</span></Menu.Item>
         </Menu.ItemGroup>

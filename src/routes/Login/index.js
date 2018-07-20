@@ -1,13 +1,15 @@
 import React from 'react'
 import BGParticle from '../../utils/BGParticle'
-import {Form,Input,Row,Col,Icon} from 'antd'
+import {Form,Input,Row,Col,Icon,message} from 'antd'
 import './style.css'
 import {randomNum,calculateWidth} from '../../utils/utils'
 import PromptBox from '../../components/PromptBox'
+import {withRouter} from "react-router-dom";
+import {inject, observer} from "mobx-react/index";
 
 
 
-@Form.create()
+@withRouter @inject('appStore') @observer @Form.create()
 class LoginForm extends React.Component{
   state = {
     focusItem:-1,   //保存当前聚焦的input
@@ -49,9 +51,43 @@ class LoginForm extends React.Component{
       code
     })
   }
-  loginSubmit = (e)=>{
+  loginSubmit = (e) => {
     e.preventDefault()
-    console.log(e)
+    this.setState({
+      focusItem: -1
+    })
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        const users = this.props.appStore.users
+        // 检测用户名是否存在
+        const result = users.find(item => item.username === values.username)
+        if (!result) {
+          this.props.form.setFields({
+            username: {
+              value: values.username,
+              errors: [new Error('用户名不存在')]
+            }
+          })
+          return
+        } else {
+          //检测密码是否错误
+          if (result.password !== values.password) {
+            this.props.form.setFields({
+              password: {
+                value: values.password,
+                errors: [new Error('密码错误')]
+              }
+            })
+            return
+          }
+        }
+
+        this.props.appStore.toggleLogin(true, {username: values.username})
+
+        const {from} = this.props.location.state || {from: {pathname: '/'}}
+        this.props.history.push(from)
+      }
+    })
   }
   register = () => {
     this.props.switchShowBox('register')
@@ -109,8 +145,7 @@ class LoginForm extends React.Component{
                   <Input
                     onFocus={() => this.setState({focusItem: 2})}
                     onBlur={() => this.setState({focusItem: -1})}
-                    type='password'
-                    maxLength={16}
+                    maxLength={4}
                     placeholder='验证码'
                     addonBefore={<span className='iconfont icon-securityCode-b' style={focusItem === 2 ? styles.focus : {}}/>}/>
                 </Col>
@@ -133,18 +168,53 @@ class LoginForm extends React.Component{
   }
 }
 
-@Form.create()
+@inject('appStore') @observer @Form.create()
 class RegisterForm extends React.Component{
   state = {
     focusItem:-1
   }
+  registerSubmit = (e) => {
+    e.preventDefault()
+    this.setState({
+      focusItem: -1
+    })
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        const users = this.props.appStore.users
+        // 检测用户名是否存在
+        const result = users.find(item => item.username === values.registerUsername)
+        if (result) {
+          this.props.form.setFields({
+            registerUsername: {
+              value: values.registerUsername,
+              errors: [new Error('用户名已存在')]
+            }
+          })
+          return
+        }
+
+        const obj = [...this.props.appStore.users, {
+          username: values.registerUsername,
+          password: values.registerPassword
+        }]
+        localStorage.setItem('users', JSON.stringify(obj))
+        this.props.appStore.initUsers()
+        message.success('注册成功')
+      }
+    })
+  }
+  gobackLogin = () => {
+    this.props.switchShowBox('login')
+    setTimeout(() => this.props.form.resetFields(), 500)
+  }
   render(){
-    const {getFieldDecorator,getFieldError} = this.props.form
+    const {getFieldDecorator,getFieldError,getFieldValue} = this.props.form
     const {focusItem} = this.state
+    console.log(getFieldError('confirmPassword'),9)
     return (
       <div className={this.props.className}>
         <h3 className='title'>管理员注册</h3>
-        <Form onSubmit={this.loginSubmit}>
+        <Form onSubmit={this.registerSubmit}>
           <Form.Item help={getFieldError('registerUsername') && <PromptBox info={getFieldError('registerUsername')} width={calculateWidth(getFieldError('registerUsername'))}/>}>
             {getFieldDecorator('registerUsername',{
               validateFirst: true,
@@ -185,17 +255,12 @@ class RegisterForm extends React.Component{
                 {required: true, message: '请确认密码'},
                 {
                   validator: (rule, value, callback) => {
-                    const {getFieldValue} = this.props.form
-                    if (!getFieldValue('registerPassword')) {
-                      callback('请先输入上面的密码')
-                    }
                     if (value && value !== getFieldValue('registerPassword')) {
-                      console.log(12313)
                       callback('两次输入不一致！')
                     }
                     callback()
                   }
-                }
+                },
               ]
             })(
               <Input
@@ -209,7 +274,7 @@ class RegisterForm extends React.Component{
           </Form.Item>
           <div className='bottom'>
             <input className='loginBtn' type="submit" value='注册'/>
-            <span className='registerBtn' onClick={this.register}>返回登录</span>
+            <span className='registerBtn' onClick={this.gobackLogin}>返回登录</span>
           </div>
         </Form>
         <div className='footer'>
@@ -220,6 +285,7 @@ class RegisterForm extends React.Component{
   }
 }
 
+@withRouter @inject('appStore') @observer
 class Login extends React.Component{
   state = {
     showBox:'login'   //展示当前表单
@@ -227,6 +293,7 @@ class Login extends React.Component{
   componentDidMount(){
     this.particle = new BGParticle('backgroundBox')
     this.particle.init()
+    this.props.appStore.initUsers()
   }
   componentWillUnmount(){
     this.particle.destory()
