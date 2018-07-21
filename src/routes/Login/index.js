@@ -13,9 +13,9 @@ const backgroundList = [
   // {src: require('./img/bg2.jpg')},
   // {src: require('./img/bg3.jpg')},
   // {src: require('./img/bg5.jpg')},
-  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/4.jpg'},
-  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/2.jpg'},
-  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/3.jpg'}
+  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg2.jpg?raw=true'},
+  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg3.jpg?raw=true'},
+  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'}
 ]
 
 @withRouter @inject('appStore') @observer @Form.create()

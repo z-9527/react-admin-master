@@ -19,8 +19,12 @@
 <body>
 <div class="test">
     <canvas id="canvas" height="41" width="130"></canvas>
+    <button onclick="test()">button</button>
 </div>
 <script>
+    function test(){
+      console.log(document.activeElement)
+    }
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#fff'
