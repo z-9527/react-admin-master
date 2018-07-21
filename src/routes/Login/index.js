@@ -311,7 +311,10 @@ class Login extends React.Component {
     showBox: 'login',   //展示当前表单
     photos: [],  //背景图片
     loading:false,
+<<<<<<< HEAD
     loading2:false,
+=======
+>>>>>>> refs/remotes/origin/master
     index:0  //显示第几张背景图
   }
 
@@ -322,7 +325,11 @@ class Login extends React.Component {
   componentWillUnmount () {
     this.particle.destory()
     notification.destroy()
+<<<<<<< HEAD
     // clearInterval(this.c)
+=======
+    clearInterval(this.c)
+>>>>>>> refs/remotes/origin/master
   }
   //载入页面时的一些处理
   initPage = () => {
@@ -356,6 +363,11 @@ class Login extends React.Component {
       //   })
       // },6000)
     })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/master
   }
   //切换showbox
   switchShowBox = (box) => {
