@@ -1,6 +1,6 @@
 import React from 'react'
 import BGParticle from '../../utils/BGParticle'
-import { Form, Input, Row, Col, Icon, message } from 'antd'
+import { Form, Input, Row, Col, message,notification } from 'antd'
 import './style.css'
 import { randomNum, calculateWidth } from '../../utils/utils'
 import PromptBox from '../../components/PromptBox'
@@ -10,11 +10,12 @@ import Loading from '../../components/Loading'
 
 const backgroundList = [
   //这里不能用本地图片，因为webpack打包的图片地址每次都不一样，每次都要重新去请求图片，实现不了预加载
+  //本来想实现背景轮播的，但是加载背景图太费时间。图片压缩过，最后想到没必要实现轮播效果
   // {src: require('./img/bg2.jpg')},
   // {src: require('./img/bg3.jpg')},
   // {src: require('./img/bg5.jpg')},
-  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg2.jpg?raw=true'},
-  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg3.jpg?raw=true'},
+  // {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg2.jpg?raw=true'},
+  // {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg3.jpg?raw=true'},
   {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'}
 ]
 
@@ -319,6 +320,7 @@ class Login extends React.Component {
 
   componentWillUnmount () {
     this.particle.destory()
+    notification.destroy()
     clearInterval(this.c)
   }
   //载入页面时的一些处理
@@ -330,24 +332,30 @@ class Login extends React.Component {
     this.particle.init()
     this.props.appStore.initUsers()
     this._whenPhotosLoaded(backgroundList).then((photos) => {
+      notification.open({
+        message:<ul><li>初始账号：admin</li><li>初始密码：admin</li></ul>,
+        duration:0,
+        className:'login-notification'
+      })
       this.setState({
         photos,
         loading:false
       })
     }).then(()=>{
       //下面用到了state，而上面setState可能是异步的，所以写在了then中
-      this.c = setInterval(()=>{
-        let i = 0
-        if(this.state.index === this.state.photos.length-1){
-          i = 0
-        } else {
-          i = this.state.index + 1
-        }
-        this.setState({
-          index:i
-        })
-      },6000)
+      // this.c = setInterval(()=>{
+      //   let i = 0
+      //   if(this.state.index === this.state.photos.length-1){
+      //     i = 0
+      //   } else {
+      //     i = this.state.index + 1
+      //   }
+      //   this.setState({
+      //     index:i
+      //   })
+      // },6000)
     })
+
 
   }
   //切换showbox
@@ -374,24 +382,26 @@ class Login extends React.Component {
 
   render () {
     const {showBox,loading,photos,index} = this.state
-    console.log(photos)
     return (
       <div id='login-page'>
-        <div style={{...styles.loadingBox,display:loading?'':'none'}}>
-          <h3 style={styles.loadingTitle}>载入中...</h3>
-          <Loading/>
-        </div>
-        <div style={{transition:'all .5s',opacity:loading?0:1}}>
-          <div id='backgroundBox' style={{...styles.backgroundBox,backgroundImage:`url(${photos.length && photos[index].src})`}}/>
-          <div className='container'>
-            <LoginForm
-              className={showBox === 'login' ? 'box showBox' : 'box hiddenBox'}
-              switchShowBox={this.switchShowBox}/>
-            <RegisterForm
-              className={showBox === 'register' ? 'box showBox' : 'box hiddenBox'}
-              switchShowBox={this.switchShowBox}/>
-          </div>
-        </div>
+        {
+          loading ?
+            <div>
+              <h3 style={styles.loadingTitle}>载入中...</h3>
+              <Loading/>
+            </div> :
+            <div>
+              <div id='backgroundBox' style={{...styles.backgroundBox,backgroundImage:`url(${photos.length && photos[index].src})`}}/>
+              <div className='container'>
+                <LoginForm
+                  className={showBox === 'login' ? 'box showBox' : 'box hiddenBox'}
+                  switchShowBox={this.switchShowBox}/>
+                <RegisterForm
+                  className={showBox === 'register' ? 'box showBox' : 'box hiddenBox'}
+                  switchShowBox={this.switchShowBox}/>
+              </div>
+            </div>
+        }
       </div>
     )
   }

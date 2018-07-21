@@ -113,6 +113,21 @@
     height: 41px;
     /*box-shadow: -2px 2px 2px rgba(0,0,0,.3);*/
 }
+.login-notification{
+    background: transparent;
+    border:1px solid #D3D7F7;
+    color:#D3D7F7;
+    width: 250px;
+    height: 80px;
+    float: right;
+    margin-right: 20px;
+}
+.login-notification .ant-notification-notice-message{
+    color:#D3D7F7;
+}
+.login-notification .ant-notification-notice-close-x{
+    color:#D3D7F7;
+}
 /*更改谷歌浏览器input背景*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
