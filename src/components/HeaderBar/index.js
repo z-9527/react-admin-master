@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Badge, Dropdown, Menu } from 'antd'
+import { Icon, Badge, Dropdown, Menu, Modal } from 'antd'
 import screenfull from 'screenfull'
 import { inject, observer } from 'mobx-react'
 import { Link, withRouter } from 'react-router-dom'
@@ -11,6 +11,8 @@ class HeaderBar extends React.Component {
   state = {
     icon: 'arrows-alt',
     count: 100,
+    visible: false,
+    avatar: require('./img/04.jpg')
   }
 
   componentDidMount () {
@@ -39,7 +41,7 @@ class HeaderBar extends React.Component {
   }
 
   render () {
-    const {icon, count} = this.state
+    const {icon, count, visible, avatar} = this.state
     const {appStore, collapsed, location} = this.props
     const notLogin = (
       <div>
@@ -62,7 +64,7 @@ class HeaderBar extends React.Component {
     )
     const login = (
       <Dropdown overlay={menu}>
-        <img src="http://cheng_haohao.oschina.io/reactadmin/static/media/b1.553c69e9.jpg" alt=""/>
+        <img onClick={() => this.setState({visible: true})} src={avatar} alt=""/>
       </Dropdown>
     )
     return (
@@ -84,6 +86,13 @@ class HeaderBar extends React.Component {
             </li>
           </ul>
         </div>
+        <Modal
+          footer={null} closable={false}
+          visible={visible}
+          wrapClassName="vertical-center-modal"
+          onCancel={() => this.setState({visible: false})}>
+          <img src={avatar} alt="" width='100%'/>
+        </Modal>
       </div>
     )
   }
