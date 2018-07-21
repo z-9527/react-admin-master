@@ -1,51 +1,62 @@
 import React from 'react'
 import BGParticle from '../../utils/BGParticle'
-import {Form,Input,Row,Col,Icon,message} from 'antd'
+import { Form, Input, Row, Col, Icon, message } from 'antd'
 import './style.css'
-import {randomNum,calculateWidth} from '../../utils/utils'
+import { randomNum, calculateWidth } from '../../utils/utils'
 import PromptBox from '../../components/PromptBox'
-import {withRouter} from "react-router-dom";
-import {inject, observer} from "mobx-react/index";
+import { withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react/index'
+import Loading from '../../components/Loading'
 
-
+const backgroundList = [
+  //这里不能用本地图片，因为webpack打包的图片地址每次都不一样，每次都要重新去请求图片，实现不了预加载
+  // {src: require('./img/bg2.jpg')},
+  // {src: require('./img/bg3.jpg')},
+  // {src: require('./img/bg5.jpg')},
+  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/4.jpg'},
+  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/2.jpg'},
+  {src:'http://www.jq22.com/demo/jquery-banner-141229212608/images/3.jpg'}
+]
 
 @withRouter @inject('appStore') @observer @Form.create()
-class LoginForm extends React.Component{
+class LoginForm extends React.Component {
   state = {
-    focusItem:-1,   //保存当前聚焦的input
-    code:''         //验证码
+    focusItem: -1,   //保存当前聚焦的input
+    code: ''         //验证码
   }
-  componentDidMount(){
+
+  componentDidMount () {
     this.createCode()
   }
+
   /**
    * 生成验证码
    */
-  createCode = ()=>{
+  createCode = () => {
     const ctx = this.canvas.getContext('2d')
     const chars = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     let code = ''
-    ctx.clearRect(0, 0, 80, 39);
-    for(let i=0;i<4;i++){
-      const char = chars[randomNum(0,57)]
+    ctx.clearRect(0, 0, 80, 39)
+    for (let i = 0; i < 4; i++) {
+      const char = chars[randomNum(0, 57)]
       code += char
       ctx.font = randomNum(20, 25) + 'px SimHei'  //设置字体随机大小
-      ctx.fillStyle = '#D3D7F7';
-      ctx.textBaseline = 'middle';
-      ctx.shadowOffsetX = randomNum(-3, 3);
-      ctx.shadowOffsetY = randomNum(-3, 3);
-      ctx.shadowBlur = randomNum(-3, 3);
-      ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
-      let x = 80 / 5 * (i + 1);
-      let y = 39 / 2;
-      let deg = randomNum(-25, 25);
+      ctx.fillStyle = '#D3D7F7'
+      ctx.textBaseline = 'middle'
+      ctx.shadowOffsetX = randomNum(-3, 3)
+      ctx.shadowOffsetY = randomNum(-3, 3)
+      ctx.shadowBlur = randomNum(-3, 3)
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.3)'
+      let x = 80 / 5 * (i + 1)
+      let y = 39 / 2
+      let deg = randomNum(-25, 25)
       /**设置旋转角度和坐标原点**/
-      ctx.translate(x, y);
-      ctx.rotate(deg * Math.PI / 180);
-      ctx.fillText(char, 0, 0);
+      ctx.translate(x, y)
+      ctx.rotate(deg * Math.PI / 180)
+      ctx.fillText(char, 0, 0)
       /**恢复旋转角度和坐标原点**/
-      ctx.rotate(-deg * Math.PI / 180);
-      ctx.translate(-x, -y);
+      ctx.rotate(-deg * Math.PI / 180)
+      ctx.translate(-x, -y)
     }
     this.setState({
       code
@@ -93,15 +104,17 @@ class LoginForm extends React.Component{
     this.props.switchShowBox('register')
     setTimeout(() => this.props.form.resetFields(), 500)
   }
-  render(){
-    const {getFieldDecorator,getFieldError} = this.props.form
-    const {focusItem,code} = this.state
+
+  render () {
+    const {getFieldDecorator, getFieldError} = this.props.form
+    const {focusItem, code} = this.state
     return (
       <div className={this.props.className}>
         <h3 className='title'>管理员登录</h3>
         <Form onSubmit={this.loginSubmit}>
-          <Form.Item help={getFieldError('username') && <PromptBox info={getFieldError('username')} width={calculateWidth(getFieldError('username'))}/>}>
-            {getFieldDecorator('username',{
+          <Form.Item help={getFieldError('username') &&
+          <PromptBox info={getFieldError('username')} width={calculateWidth(getFieldError('username'))}/>}>
+            {getFieldDecorator('username', {
               rules: [{required: true, message: '请输入用户名'}]
             })(
               <Input
@@ -112,8 +125,9 @@ class LoginForm extends React.Component{
                 addonBefore={<span className='iconfont icon-User' style={focusItem === 0 ? styles.focus : {}}/>}/>
             )}
           </Form.Item>
-          <Form.Item help={getFieldError('password') && <PromptBox info={getFieldError('password')} width={calculateWidth(getFieldError('password'))}/>}>
-            {getFieldDecorator('password',{
+          <Form.Item help={getFieldError('password') &&
+          <PromptBox info={getFieldError('password')} width={calculateWidth(getFieldError('password'))}/>}>
+            {getFieldDecorator('password', {
               rules: [{required: true, message: '请输入密码'}]
             })(
               <Input
@@ -125,14 +139,15 @@ class LoginForm extends React.Component{
                 addonBefore={<span className='iconfont icon-suo1' style={focusItem === 1 ? styles.focus : {}}/>}/>
             )}
           </Form.Item>
-          <Form.Item help={getFieldError('verification') && <PromptBox info={getFieldError('verification')} width={calculateWidth(getFieldError('verification'))}/>}>
-            {getFieldDecorator('verification',{
+          <Form.Item help={getFieldError('verification') &&
+          <PromptBox info={getFieldError('verification')} width={calculateWidth(getFieldError('verification'))}/>}>
+            {getFieldDecorator('verification', {
               validateFirst: true,
               rules: [
                 {required: true, message: '请输入验证码'},
                 {
                   validator: (rule, value, callback) => {
-                    if (value.length >= 4 && code.toUpperCase()!==value.toUpperCase()) {
+                    if (value.length >= 4 && code.toUpperCase() !== value.toUpperCase()) {
                       callback('验证码错误')
                     }
                     callback()
@@ -147,10 +162,11 @@ class LoginForm extends React.Component{
                     onBlur={() => this.setState({focusItem: -1})}
                     maxLength={4}
                     placeholder='验证码'
-                    addonBefore={<span className='iconfont icon-securityCode-b' style={focusItem === 2 ? styles.focus : {}}/>}/>
+                    addonBefore={<span className='iconfont icon-securityCode-b'
+                                       style={focusItem === 2 ? styles.focus : {}}/>}/>
                 </Col>
                 <Col span={9}>
-                  <canvas onClick={this.createCode} width="80" height='39' ref={el=>this.canvas=el}/>
+                  <canvas onClick={this.createCode} width="80" height='39' ref={el => this.canvas = el}/>
                 </Col>
               </Row>
             )}
@@ -169,9 +185,9 @@ class LoginForm extends React.Component{
 }
 
 @inject('appStore') @observer @Form.create()
-class RegisterForm extends React.Component{
+class RegisterForm extends React.Component {
   state = {
-    focusItem:-1
+    focusItem: -1
   }
   registerSubmit = (e) => {
     e.preventDefault()
@@ -207,16 +223,17 @@ class RegisterForm extends React.Component{
     this.props.switchShowBox('login')
     setTimeout(() => this.props.form.resetFields(), 500)
   }
-  render(){
-    const {getFieldDecorator,getFieldError,getFieldValue} = this.props.form
+
+  render () {
+    const {getFieldDecorator, getFieldError, getFieldValue} = this.props.form
     const {focusItem} = this.state
-    console.log(getFieldError('confirmPassword'),9)
     return (
       <div className={this.props.className}>
         <h3 className='title'>管理员注册</h3>
         <Form onSubmit={this.registerSubmit}>
-          <Form.Item help={getFieldError('registerUsername') && <PromptBox info={getFieldError('registerUsername')} width={calculateWidth(getFieldError('registerUsername'))}/>}>
-            {getFieldDecorator('registerUsername',{
+          <Form.Item help={getFieldError('registerUsername') && <PromptBox info={getFieldError('registerUsername')}
+                                                                           width={calculateWidth(getFieldError('registerUsername'))}/>}>
+            {getFieldDecorator('registerUsername', {
               validateFirst: true,
               rules: [
                 {required: true, message: '用户名不能为空'},
@@ -231,8 +248,9 @@ class RegisterForm extends React.Component{
                 addonBefore={<span className='iconfont icon-User' style={focusItem === 0 ? styles.focus : {}}/>}/>
             )}
           </Form.Item>
-          <Form.Item help={getFieldError('registerPassword') && <PromptBox info={getFieldError('registerPassword')} width={calculateWidth(getFieldError('registerPassword'))}/>}>
-            {getFieldDecorator('registerPassword',{
+          <Form.Item help={getFieldError('registerPassword') && <PromptBox info={getFieldError('registerPassword')}
+                                                                           width={calculateWidth(getFieldError('registerPassword'))}/>}>
+            {getFieldDecorator('registerPassword', {
               validateFirst: true,
               rules: [
                 {required: true, message: '密码不能为空'},
@@ -248,8 +266,9 @@ class RegisterForm extends React.Component{
                 addonBefore={<span className='iconfont icon-suo1' style={focusItem === 1 ? styles.focus : {}}/>}/>
             )}
           </Form.Item>
-          <Form.Item help={getFieldError('confirmPassword') && <PromptBox info={getFieldError('confirmPassword')} width={calculateWidth(getFieldError('confirmPassword'))}/>}>
-            {getFieldDecorator('confirmPassword',{
+          <Form.Item help={getFieldError('confirmPassword') && <PromptBox info={getFieldError('confirmPassword')}
+                                                                          width={calculateWidth(getFieldError('confirmPassword'))}/>}>
+            {getFieldDecorator('confirmPassword', {
               validateFirst: true,
               rules: [
                 {required: true, message: '请确认密码'},
@@ -286,17 +305,50 @@ class RegisterForm extends React.Component{
 }
 
 @withRouter @inject('appStore') @observer
-class Login extends React.Component{
+class Login extends React.Component {
   state = {
-    showBox:'login'   //展示当前表单
+    showBox: 'login',   //展示当前表单
+    photos: [],  //背景图片
+    loading:false,
+    index:0  //显示第几张背景图
   }
-  componentDidMount(){
+
+  componentDidMount () {
+    this.initPage()
+  }
+
+  componentWillUnmount () {
+    this.particle.destory()
+    clearInterval(this.c)
+  }
+  //载入页面时的一些处理
+  initPage = () => {
+    this.setState({
+      loading:true
+    })
     this.particle = new BGParticle('backgroundBox')
     this.particle.init()
     this.props.appStore.initUsers()
-  }
-  componentWillUnmount(){
-    this.particle.destory()
+    this._whenPhotosLoaded(backgroundList).then((photos) => {
+      this.setState({
+        photos,
+        loading:false
+      })
+    }).then(()=>{
+      //下面用到了state，而上面setState可能是异步的，所以写在了then中
+      this.c = setInterval(()=>{
+        let i = 0
+        if(this.state.index === this.state.photos.length-1){
+          i = 0
+        } else {
+          i = this.state.index + 1
+        }
+        this.setState({
+          index:i
+        })
+      },6000)
+    })
+
   }
   //切换showbox
   switchShowBox = (box) => {
@@ -304,19 +356,41 @@ class Login extends React.Component{
       showBox: box
     })
   }
-  render(){
-    const {showBox} = this.state
-    console.log(showBox)
+
+  //登录的背景图太大，等载入完后再显示，实际上是图片预加载，
+  _whenPhotosLoaded (photos) {
+    return Promise.all(photos.map(photo => new Promise((resolve) => {
+      const image = document.createElement('img')
+      image.src = photo.src
+      if (image.naturalWidth > 0 || image.complete) {
+        resolve(photo)
+      } else {
+        image.onload = () => {
+          resolve(photo)
+        }
+      }
+    })))
+  }
+
+  render () {
+    const {showBox,loading,photos,index} = this.state
+    console.log(photos)
     return (
       <div id='login-page'>
-        <div id='backgroundBox' style={styles.backgroundBox}/>
-        <div className='container'>
-          <LoginForm
-            className={showBox==='login'?'box showBox':'box hiddenBox'}
-            switchShowBox={this.switchShowBox}/>
-          <RegisterForm
-            className={showBox==='register'?'box showBox':'box hiddenBox'}
-            switchShowBox={this.switchShowBox}/>
+        <div style={{...styles.loadingBox,display:loading?'':'none'}}>
+          <h3 style={styles.loadingTitle}>载入中...</h3>
+          <Loading/>
+        </div>
+        <div style={{transition:'all .5s',opacity:loading?0:1}}>
+          <div id='backgroundBox' style={{...styles.backgroundBox,backgroundImage:`url(${photos.length && photos[index].src})`}}/>
+          <div className='container'>
+            <LoginForm
+              className={showBox === 'login' ? 'box showBox' : 'box hiddenBox'}
+              switchShowBox={this.switchShowBox}/>
+            <RegisterForm
+              className={showBox === 'register' ? 'box showBox' : 'box hiddenBox'}
+              switchShowBox={this.switchShowBox}/>
+          </div>
         </div>
       </div>
     )
@@ -324,20 +398,33 @@ class Login extends React.Component{
 }
 
 const styles = {
-  backgroundBox:{
-    position:'fixed',
-    top:'0',
-    left:'0',
-    width:'100vw',
-    height:'100vh',
-    backgroundImage:`url(${require('./img/bg5.jpg')})`,
-    backgroundSize:'100% 100%'
+  backgroundBox: {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '100vw',
+    height: '100vh',
+    // backgroundImage: `url(${require('./img/bg5.jpg')})`,
+    backgroundSize: '100% 100%',
+    transition:'all .5s'
   },
-  focus:{
+  focus: {
     // transform: 'scale(0.7)',
-    width:'20px',
-    opacity:1
-  }
+    width: '20px',
+    opacity: 1
+  },
+  loadingBox:{
+    position:'fixed',
+    top:'50%',
+    left:'50%',
+    transform:'translate(-50%,-50%)'
+  },
+  loadingTitle:{
+    textAlign:'center',
+    marginBottom:20,
+    color:'#7f8c8d',
+    fontWeight:500
+  },
 }
 
 export default Login
