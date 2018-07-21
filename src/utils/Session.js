@@ -1,4 +1,4 @@
-const LOGIN_COOKIE_NAME = 'sessionid'
+const LOGIN_COOKIE_NAME = 'sessionId'
 
 export function isAuthenticated () {
   return _getCookie(LOGIN_COOKIE_NAME)

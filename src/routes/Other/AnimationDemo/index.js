@@ -92,9 +92,9 @@ class AnimationDemo extends React.Component{
         <TypingCard source='当需要动态效果，如过渡、鼠标悬浮等。本页面用到了animation.css库和shufflejs库'/>
         <Card bordered={false}>
           <p>
-            <Button style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter()}>All</Button>
-            <Button style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter('Entrances')}>Entrances</Button>
-            <Button style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter('Exits')}>Exits</Button><br/>
+            <Button type='primary' style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter()}>All</Button>
+            <Button type='primary' style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter('Entrances')}>Entrances</Button>
+            <Button type='primary' style={{margin:'5px 10px'}} onClick={()=>this.shuffle.filter('Exits')}>Exits</Button><br/>
             {
               animations.map(item=>(
                 <Button

@@ -86,3 +86,9 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: #777;
 }
+
+/*更改antd的primary button样式*/
+.ant-btn-primary{
+    background: #36bafb;
+    border-color: #36bafb;
+}

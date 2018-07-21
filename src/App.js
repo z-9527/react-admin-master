@@ -1,48 +1,21 @@
 import React, {Component} from 'react';
-import {Layout} from 'antd'
-import SiderNav from './components/SiderNav'
-import ContentMain from './components/ContentMain'
-import HeaderBar from './components/HeaderBar'
+import PrivateRoute from './components/PrivateRoute'
+import {Route,Switch} from 'react-router-dom'
+import Login from './routes/Login/index'
+// import Login from './routes/Login2/index'
+import Index from './routes/Index/index'
 import './App.css'
 import './assets/font/iconfont.css'
 
-const {Sider, Header, Content, Footer} = Layout
 
 class App extends Component {
-  state = {
-    collapsed: false
-  }
-
-  toggle = () => {
-    // console.log(this)  状态提升后，到底是谁调用的它
-    this.setState({
-      collapsed: !this.state.collapsed
-    })
-  }
-
   render() {
-    // 设置Sider的minHeight可以是左右自适应对齐
     return (
-      <div id='page'>
-        <Layout>
-          <Sider collapsible
-                 trigger={null}
-                 collapsed={this.state.collapsed}
-                 style={{minHeight: '100vh',overflowY:'auto'}}>
-            <SiderNav/>
-          </Sider>
-          <Layout>
-            <Header style={{background: '#fff', padding: '0 16px'}}>
-              <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
-            </Header>
-            <Content style={{margin: '16px'}}>
-              <ContentMain/>
-            </Content>
-            <Footer style={{textAlign: 'center'}}>React-Admin ©2018 Created by 137596665@qq.com</Footer>
-          </Layout>
-        </Layout>
-      </div>
-    );
+      <Switch>
+        <Route path='/login' component={Login}/>
+        <PrivateRoute path='/' component={Index}/>
+      </Switch>
+    )
   }
 }
 

@@ -268,7 +268,7 @@ class RegisterForm extends React.Component{
                 onBlur={() => this.setState({focusItem: -1})}
                 type='password'
                 maxLength={16}
-                placeholder='密码'
+                placeholder='确认密码'
                 addonBefore={<span className='iconfont icon-suo1' style={focusItem === 2 ? styles.focus : {}}/>}/>
             )}
           </Form.Item>
