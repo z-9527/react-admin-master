@@ -19,7 +19,7 @@ const props = {
   },
   onChange(info) {
     if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
+      // console.log(info.file, info.fileList);
     }
     if (info.file.status === 'done') {
       message.success(`${info.file.name} 文件上传成功`);
@@ -101,7 +101,7 @@ class UploadDemo extends React.Component {
         loading: false,
       }))
     } else if (info.file.status === 'error') {
-      console.log(info.file)
+      // console.log(info.file)
       message.error(`${info.file.name} 文件上传失败（${info.file.error.message}）`);
       this.setState({
         loading: false

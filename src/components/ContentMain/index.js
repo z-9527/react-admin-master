@@ -1,12 +1,9 @@
 import React from 'react'
-import {withRouter,Route,Switch,Redirect} from 'react-router-dom'
+import {withRouter,Switch,Redirect} from 'react-router-dom'
 import AsyncComponent from '../../utils/AsyncComponent'
+import PrivateRoute from '../PrivateRoute'
 
 const Home = AsyncComponent(()=>import('../../routes/Home/index'))
-
-//登录页面
-const Login = AsyncComponent(()=>import('../../routes/Login/index'))
-// const Login = AsyncComponent(()=>import('../../routes/Login2/index'))
 
 //基本组件Demo
 const ButtonDemo = AsyncComponent(()=>import('../../routes/General/ButtonDemo/index'))
@@ -41,43 +38,37 @@ const GalleryDemo = AsyncComponent(()=>import('../../routes/Other/GalleryDemo/in
 
 
 
-
-
-
-
 @withRouter
 class ContentMain extends React.Component{
   render(){
     return (
       <div>
         <Switch>
-          <Route exact path='/home' component={Home}/>
+          <PrivateRoute exact path='/home' component={Home}/>
 
-          <Route exact path='/login' component={Login}/>
+          <PrivateRoute exact path='/home/general/button' component={ButtonDemo}/>
+          <PrivateRoute exact path='/home/general/icon' component={IconDemo}/>
 
-          <Route exact path='/home/general/button' component={ButtonDemo}/>
-          <Route exact path='/home/general/icon' component={IconDemo}/>
+          <PrivateRoute exact path='/home/navigation/dropdown' component={DropdownDemo}/>
+          <PrivateRoute exact path='/home/navigation/menu' component={MenuDemo}/>
+          <PrivateRoute exact path='/home/navigation/steps' component={StepsDemo}/>
 
-          <Route exact path='/home/navigation/dropdown' component={DropdownDemo}/>
-          <Route exact path='/home/navigation/menu' component={MenuDemo}/>
-          <Route exact path='/home/navigation/steps' component={StepsDemo}/>
+          <PrivateRoute exact path='/home/entry/form/basic-form' component={FormDemo1}/>
+          <PrivateRoute exact path='/home/entry/form/step-form' component={FormDemo2}/>
+          <PrivateRoute exact path='/home/entry/upload' component={UploadDemo}/>
 
-          <Route exact path='/home/entry/form/basic-form' component={FormDemo1}/>
-          <Route exact path='/home/entry/form/step-form' component={FormDemo2}/>
-          <Route exact path='/home/entry/upload' component={UploadDemo}/>
+          <PrivateRoute exact path='/home/display/carousel' component={CarouselDemo}/>
+          <PrivateRoute exact path='/home/display/collapse' component={CollapseDemo}/>
+          <PrivateRoute exact path='/home/display/list' component={ListDemo}/>
+          <PrivateRoute exact path='/home/display/table' component={TableDemo}/>
+          <PrivateRoute exact path='/home/display/tabs' component={TabsDemo}/>
 
-          <Route exact path='/home/display/carousel' component={CarouselDemo}/>
-          <Route exact path='/home/display/collapse' component={CollapseDemo}/>
-          <Route exact path='/home/display/list' component={ListDemo}/>
-          <Route exact path='/home/display/table' component={TableDemo}/>
-          <Route exact path='/home/display/tabs' component={TabsDemo}/>
+          <PrivateRoute exact path='/home/feedback/modal' component={ModalDemo}/>
+          <PrivateRoute exact path='/home/feedback/notification' component={NotificationDemo}/>
+          <PrivateRoute exact path='/home/feedback/spin' component={SpinDemo}/>
 
-          <Route exact path='/home/feedback/modal' component={ModalDemo}/>
-          <Route exact path='/home/feedback/notification' component={NotificationDemo}/>
-          <Route exact path='/home/feedback/spin' component={SpinDemo}/>
-
-          <Route exact path='/home/other/animation' component={AnimationDemo}/>
-          <Route exact path='/home/other/gallery' component={GalleryDemo}/>
+          <PrivateRoute exact path='/home/other/animation' component={AnimationDemo}/>
+          <PrivateRoute exact path='/home/other/gallery' component={GalleryDemo}/>
 
           <Redirect exact from='/' to='/home'/>
         </Switch>
