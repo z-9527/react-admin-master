@@ -1,6 +1,6 @@
 import React from 'react'
 import BGParticle from '../../utils/BGParticle'
-import { Form, Input, Row, Col, message,notification } from 'antd'
+import { Form, Input, Row, Col, notification, message } from 'antd'
 import './style.css'
 import { randomNum, calculateWidth } from '../../utils/utils'
 import PromptBox from '../../components/PromptBox'
@@ -8,16 +8,7 @@ import { withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react/index'
 import Loading from '../../components/Loading'
 
-const backgroundList = [
-  //这里不能用本地图片，因为webpack打包的图片地址每次都不一样，每次都要重新去请求图片，实现不了预加载
-  //本来想实现背景轮播的，但是加载背景图太费时间。图片压缩过，最后想到没必要实现轮播效果
-  // {src: require('./img/bg2.jpg')},
-  // {src: require('./img/bg3.jpg')},
-  // {src: require('./img/bg5.jpg')},
-  // {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg2.jpg?raw=true'},
-  // {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg3.jpg?raw=true'},
-  {src:'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'}
-]
+const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'
 
 @withRouter @inject('appStore') @observer @Form.create()
 class LoginForm extends React.Component {
@@ -309,13 +300,9 @@ class RegisterForm extends React.Component {
 class Login extends React.Component {
   state = {
     showBox: 'login',   //展示当前表单
-    photos: [],  //背景图片
+    url: '',  //背景图片
     loading:false,
-<<<<<<< HEAD
     loading2:false,
-=======
->>>>>>> refs/remotes/origin/master
-    index:0  //显示第几张背景图
   }
 
   componentDidMount () {
@@ -325,49 +312,28 @@ class Login extends React.Component {
   componentWillUnmount () {
     this.particle.destory()
     notification.destroy()
-<<<<<<< HEAD
-    // clearInterval(this.c)
-=======
-    clearInterval(this.c)
->>>>>>> refs/remotes/origin/master
   }
   //载入页面时的一些处理
   initPage = () => {
     this.setState({
       loading:true
     })
-    this.particle = new BGParticle('backgroundBox')
-    this.particle.init()
     this.props.appStore.initUsers()
-    this._whenPhotosLoaded(backgroundList).then((photos) => {
+    this.loadImageAsync(url).then(url=>{
+      this.setState({
+        loading:false,
+        url
+      })
+    }).then(()=>{
+      //为什么写在then里？id为backgroundBox的DOM元素是在loading为false时才有，而上面的setState可能是异步的，必须等到setState执行完成后才去获取dom
+      this.particle = new BGParticle('backgroundBox')
+      this.particle.init()
       notification.open({
         message:<ul><li>初始账号：admin</li><li>初始密码：admin</li></ul>,
         duration:0,
         className:'login-notification'
       })
-      this.setState({
-        photos,
-        loading:false
-      })
-    }).then(()=>{
-      //下面用到了state，而上面setState可能是异步的，所以写在了then中
-      // this.c = setInterval(()=>{
-      //   let i = 0
-      //   if(this.state.index === this.state.photos.length-1){
-      //     i = 0
-      //   } else {
-      //     i = this.state.index + 1
-      //   }
-      //   this.setState({
-      //     index:i
-      //   })
-      // },6000)
     })
-<<<<<<< HEAD
-=======
-
-
->>>>>>> refs/remotes/origin/master
   }
   //切换showbox
   switchShowBox = (box) => {
@@ -377,32 +343,31 @@ class Login extends React.Component {
   }
 
   //登录的背景图太大，等载入完后再显示，实际上是图片预加载，
-  _whenPhotosLoaded (photos) {
-    return Promise.all(photos.map(photo => new Promise((resolve) => {
-      const image = document.createElement('img')
-      image.src = photo.src
-      if (image.naturalWidth > 0 || image.complete) {
-        resolve(photo)
-      } else {
-        image.onload = () => {
-          resolve(photo)
-        }
-      }
-    })))
+  loadImageAsync (url) {
+    return new Promise(function(resolve, reject) {
+      const image = new Image();
+      image.onload = function() {
+        resolve(url);
+      };
+      image.onerror = function() {
+        reject(new Error('Could not load image at ' + url));
+      };
+      image.src = url;
+    });
   }
 
   render () {
-    const {showBox,loading,photos,index} = this.state
+    const {showBox,loading,url} = this.state
     return (
       <div id='login-page'>
         {
-          loading ?
+          this.state.loading ?
             <div>
               <h3 style={styles.loadingTitle}>载入中...</h3>
               <Loading/>
-            </div> :
+            </div>:
             <div>
-              <div id='backgroundBox' style={{...styles.backgroundBox,backgroundImage:`url(${photos.length && photos[index].src})`}}/>
+              <div id='backgroundBox' style={styles.backgroundBox}/>
               <div className='container'>
                 <LoginForm
                   className={showBox === 'login' ? 'box showBox' : 'box hiddenBox'}
@@ -425,7 +390,7 @@ const styles = {
     left: '0',
     width: '100vw',
     height: '100vh',
-    // backgroundImage: `url(${require('./img/bg5.jpg')})`,
+    backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true)',
     backgroundSize: '100% 100%',
     transition:'all .5s'
   },
