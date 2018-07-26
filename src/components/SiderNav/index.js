@@ -2,11 +2,11 @@ import React from 'react'
 import CustomMenu from "../CustomMenu/index";
 
 const menus = [
-  {
-    title: '首页',
-    icon: 'home',
-    key: '/home'
-  },
+  // {
+  //   title: '首页',
+  //   icon: 'home',
+  //   key: '/home'
+  // },
   {
     title: '基本组件',
     icon: 'laptop',

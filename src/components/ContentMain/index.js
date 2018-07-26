@@ -44,7 +44,7 @@ const ChartDemo = AsyncComponent(()=>import('../../routes/Other/ChartDemo/index'
 class ContentMain extends React.Component{
   render(){
     return (
-      <div>
+      <div style={{padding:16,position:'relative'}}>
         <Switch>
           <PrivateRoute exact path='/home' component={Home}/>
 
