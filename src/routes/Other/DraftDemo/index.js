@@ -12,7 +12,7 @@ import './style.css'
 
 const content = {"entityMap":{},"blocks":[{"key":"637gr","text":"Initialized from content state.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]};
 
-class Draft extends React.Component{
+class DraftDemo extends React.Component{
   state = {
     editorState: EditorState.createEmpty(),
     contentState:content
@@ -35,12 +35,11 @@ class Draft extends React.Component{
   render(){
     const cardContent = `此页面用到的富文本编辑是<a href="https://github.com/jpuri/react-draft-wysiwyg">react-draft-wysiwyg@^1.12.13</a>`
     const { editorState,contentState } = this.state;
-    console.log(editorState)
     return (
       <div>
         <CustomBreadcrumb arr={['其它','富文本编辑器']}/>
         <TypingCard title='富文本编辑器' source={cardContent}/>
-        <Card bordered={false} style={{marginBottom:10}}>
+        <Card bordered={false} className='card-item'>
           <Editor
             editorState={editorState}
             onEditorStateChange={this.onEditorStateChange}
@@ -75,4 +74,4 @@ class Draft extends React.Component{
     )
   }
 }
-export default Draft
+export default DraftDemo
