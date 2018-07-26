@@ -33,7 +33,7 @@ class Index extends React.Component{
             <Header style={{background: '#fff', padding: '0 16px'}}>
               <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
             </Header>
-            <Content style={{margin: '16px'}}>
+            <Content>
               <ContentMain/>
             </Content>
             <Footer style={{textAlign: 'center'}}>React-Admin ©2018 Created by 137596665@qq.com</Footer>

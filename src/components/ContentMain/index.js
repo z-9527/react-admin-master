@@ -34,6 +34,8 @@ const NotificationDemo = AsyncComponent(()=>import('../../routes/Feedback/Notifi
 //其它
 const AnimationDemo = AsyncComponent(()=>import('../../routes/Other/AnimationDemo/index'))
 const GalleryDemo = AsyncComponent(()=>import('../../routes/Other/GalleryDemo/index'))
+const DraftDemo = AsyncComponent(()=>import('../../routes/Other/DraftDemo/index'))
+const ChartDemo = AsyncComponent(()=>import('../../routes/Other/ChartDemo/index'))
 //关于
 
 
@@ -42,7 +44,7 @@ const GalleryDemo = AsyncComponent(()=>import('../../routes/Other/GalleryDemo/in
 class ContentMain extends React.Component{
   render(){
     return (
-      <div>
+      <div style={{padding:16,position:'relative'}}>
         <Switch>
           <PrivateRoute exact path='/home' component={Home}/>
 
@@ -69,6 +71,8 @@ class ContentMain extends React.Component{
 
           <PrivateRoute exact path='/home/other/animation' component={AnimationDemo}/>
           <PrivateRoute exact path='/home/other/gallery' component={GalleryDemo}/>
+          <PrivateRoute exact path='/home/other/draft' component={DraftDemo}/>
+          <PrivateRoute exact path='/home/other/chart' component={ChartDemo}/>
 
           <Redirect exact from='/' to='/home'/>
         </Switch>
