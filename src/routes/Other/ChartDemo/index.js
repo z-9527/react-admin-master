@@ -479,7 +479,8 @@ class ChartDemo extends React.Component {
               <Chart height={400} data={dv3} scale={cols3} padding={[80, 100, 80, 80]} forceFit>
                 <Coord type='theta' radius={0.75}/>
                 <Axis name="percent"/>
-                <Legend position='right' offsetY={-80} offsetX={-100}/>
+                {/*<Legend position='right' offsetY={-80} offsetX={-100}/>*/}
+                <Legend position='right' offsetY={-80}/>
                 <Tooltip
                   showTitle={false}
                   itemTpl='<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'

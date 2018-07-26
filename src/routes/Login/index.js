@@ -8,7 +8,8 @@ import { withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react/index'
 import Loading from '../../components/Loading'
 
-const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'
+// const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'
+const url = 'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-654485.jpg'
 
 @withRouter @inject('appStore') @observer @Form.create()
 class LoginForm extends React.Component {
@@ -357,11 +358,11 @@ class Login extends React.Component {
   }
 
   render () {
-    const {showBox,loading,url} = this.state
+    const {showBox,loading} = this.state
     return (
       <div id='login-page'>
         {
-          this.state.loading ?
+          loading ?
             <div>
               <h3 style={styles.loadingTitle}>载入中...</h3>
               <Loading/>
@@ -390,7 +391,8 @@ const styles = {
     left: '0',
     width: '100vw',
     height: '100vh',
-    backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true)',
+    // backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true)',
+    backgroundImage: 'url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-654485.jpg)',
     backgroundSize: '100% 100%',
     transition:'all .5s'
   },
