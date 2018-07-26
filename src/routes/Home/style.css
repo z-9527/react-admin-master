@@ -4,6 +4,11 @@
     /*background: #364d79;*/
     overflow: hidden;
 }
+.home .size{
+    height: calc(100vh - 64px);
+    width: 100%;
+    background-size: cover;
+}
 .home .ant-carousel .slick-slider .slick-arrow{
     width: 20px;
     height: 60px;
