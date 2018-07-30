@@ -52,3 +52,15 @@ export function randomNum(min, max) {
 export function calculateWidth(arr){
   return 30 + arr[0].length*15
 }
+
+/**
+ * 图片预加载
+ * @param arr
+ * @constructor
+ */
+export function preloadingImages(arr) {
+  arr.forEach(item=>{
+    const img = new Image()
+    img.src = item
+  })
+}

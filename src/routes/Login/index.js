@@ -7,9 +7,15 @@ import PromptBox from '../../components/PromptBox'
 import { withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react/index'
 import Loading from '../../components/Loading'
+import {preloadingImages} from '../../utils/utils'
 
-// const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true'
-const url = 'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-654485.jpg'
+const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg1.jpg?raw=true'
+const imgs = [
+  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide1.jpg?raw=true',
+  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide2.jpg?raw=true',
+  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide3.jpg?raw=true',
+  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide4.jpg?raw=true'
+]
 
 @withRouter @inject('appStore') @observer @Form.create()
 class LoginForm extends React.Component {
@@ -308,6 +314,7 @@ class Login extends React.Component {
 
   componentDidMount () {
     this.initPage()
+    preloadingImages(imgs)  //预加载下一个页面的图片，预加载了第二次为什么还会去请求图片资源？
   }
 
   componentWillUnmount () {
@@ -392,7 +399,7 @@ const styles = {
     width: '100vw',
     height: '100vh',
     // backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true)',
-    backgroundImage: 'url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-654485.jpg)',
+    backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg1.jpg?raw=true)',
     backgroundSize: '100% 100%',
     transition:'all .5s'
   },
