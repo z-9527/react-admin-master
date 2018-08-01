@@ -7,7 +7,9 @@ import PromptBox from '../../components/PromptBox'
 import { withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react/index'
 import Loading from '../../components/Loading'
+import Loading2 from '../../components/Loading2'
 import {preloadingImages} from '../../utils/utils'
+import 'animate.css'
 
 const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg1.jpg?raw=true'
 const imgs = [
@@ -371,8 +373,8 @@ class Login extends React.Component {
         {
           loading ?
             <div>
-              <h3 style={styles.loadingTitle}>载入中...</h3>
-              <Loading/>
+              <h3 style={styles.loadingTitle} className='animated bounceInLeft'>载入中...</h3>
+              <Loading2/>
             </div>:
             <div>
               <div id='backgroundBox' style={styles.backgroundBox}/>
@@ -415,10 +417,14 @@ const styles = {
     transform:'translate(-50%,-50%)'
   },
   loadingTitle:{
-    textAlign:'center',
-    marginBottom:20,
-    color:'#7f8c8d',
-    fontWeight:500
+    position:'fixed',
+    top:'50%',
+    left:'50%',
+    marginLeft: -45,
+    marginTop: -18,
+    color:'#000',
+    fontWeight:500,
+    fontSize:24
   },
 }
 
