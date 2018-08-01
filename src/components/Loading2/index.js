@@ -14,10 +14,13 @@ class Loading2 extends React.Component{
     this.anim = bodymovin.loadAnimation(animData);
     this.anim.setSpeed(1.42);
   }
+  componentWillUnmount(){
+    this.anim = null
+  }
   render(){
     return (
-      <div>
-        <div id="animationWindow"/>
+      <div  style={{width:'100%',height:'100%'}}>
+        <div id="animationWindow" style={{width:'100%',height:'100%'}}/>
       </div>
     )
   }
