@@ -1,8 +1,14 @@
 import React from 'react'
+import {notification} from 'antd'
 
 class SpringText extends React.Component{
   componentDidMount(){
     this.createText()
+    notification.open({
+      description: '鼠标移入到文字上，或者鼠标点击屏幕',
+      style:{marginTop:64}
+    });
+
   }
   componentWillUnmount(){
     window.cancelAnimationFrame(this.myReq)
