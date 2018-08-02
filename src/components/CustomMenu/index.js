@@ -100,7 +100,7 @@ class CustomMenu extends React.Component {
         onClick={({key}) => this.setState({selectedKeys: [key]})}
         openKeys={openKeys}
         selectedKeys={selectedKeys}
-        theme='dark'
+        theme={this.props.theme ? this.props.theme : 'dark'}
         mode='inline'>
         {
           this.props.menus && this.props.menus.map(item => {
