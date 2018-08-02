@@ -75,6 +75,8 @@ const menus = [
       {key:'/home/other/draft',title:'富文本',icon:''},
       {key:'/home/other/chart',title:'图表',icon:''},
       {key:'/home/other/loading',title:'加载动画',icon:''},
+      {key:'/home/other/404',title:'404',icon:''},
+      {key:'/home/other/springText',title:'弹性文字',icon:''},
     ]
   },
   {
