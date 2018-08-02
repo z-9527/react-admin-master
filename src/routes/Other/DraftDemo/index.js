@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
-import {Card,Row,Col} from 'antd'
+import {Card,Row,Col,BackTop} from 'antd'
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
@@ -70,6 +70,7 @@ class DraftDemo extends React.Component{
             </Card>
           </Col>
         </Row>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

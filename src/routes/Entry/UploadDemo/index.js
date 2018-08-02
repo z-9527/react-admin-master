@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Col, Row, Icon, Upload, message, Button, Modal} from 'antd'
+import {Card, Col, Row, Icon, Upload, message, Button, Modal,BackTop} from 'antd'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb'
 import TypingCard from '../../../components/TypingCard'
 
@@ -187,6 +187,7 @@ class UploadDemo extends React.Component {
             </Card>
           </Col>
         </Row>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

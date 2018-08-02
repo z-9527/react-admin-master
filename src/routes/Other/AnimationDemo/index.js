@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Button} from 'antd'
+import {Card, Button,BackTop} from 'antd'
 import Shuffle from 'shufflejs'
 import 'animate.css'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
@@ -131,6 +131,7 @@ class AnimationDemo extends React.Component{
             <div style={{width:'8.33333%'}}  ref={(div)=>this.sizer = div}/>
           </div>
         </div>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

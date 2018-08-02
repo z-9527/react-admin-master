@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Col, Row, Collapse} from 'antd'
+import {Card, Col, Row, Collapse,BackTop} from 'antd'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
 
@@ -62,6 +62,7 @@ class CollapseDemo extends React.Component {
             </Card>
           </Col>
         </Row>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

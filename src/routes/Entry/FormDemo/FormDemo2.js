@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Alert, Divider, Select, Steps, Input, Button, Form,Icon} from 'antd'
+import {Card, Alert, Divider, Select, Steps, Input, Button, Form,Icon,BackTop} from 'antd'
 import {inject,observer} from 'mobx-react'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import './css/formDeni2.css'
@@ -99,6 +99,7 @@ class Step1 extends React.Component{
             如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
           </p>
         </div>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

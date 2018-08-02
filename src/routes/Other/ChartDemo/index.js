@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
-import { Card, Row, Col } from 'antd'
+import { Card, Row, Col,BackTop } from 'antd'
 import { Chart, Axis, Geom, Tooltip, Coord, Label, Legend, G2 } from 'BizCharts'
 import { View } from '@antv/data-set'
 
@@ -532,6 +532,7 @@ class ChartDemo extends React.Component {
             </Card>
           </Col>
         </Row>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

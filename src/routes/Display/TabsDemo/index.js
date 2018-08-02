@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Col, Row, Icon, Tabs, message, Radio} from 'antd'
+import {Card, Col, Row, Icon, Tabs, message, Radio,BackTop} from 'antd'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
 
@@ -166,6 +166,7 @@ class TabsDemo extends React.Component {
             </Card>
           </Col>
         </Row>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }

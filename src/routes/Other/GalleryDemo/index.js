@@ -2,7 +2,7 @@ import React from 'react'
 import Shuffle from 'shufflejs'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
-import {Card,Button,Modal} from 'antd'
+import {Card,Button,Modal,BackTop} from 'antd'
 
 class GalleryDemo extends React.Component{
   state = {
@@ -164,6 +164,7 @@ class GalleryDemo extends React.Component{
           onCancel={()=>this.setState({visible:false})}>
           <img src={this.state.image} alt="" width='100%'/>
         </Modal>
+        <BackTop visibilityHeight={200} style={{right: 50}}/>
       </div>
     )
   }
