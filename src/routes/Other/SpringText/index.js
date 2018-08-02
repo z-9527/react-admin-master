@@ -12,6 +12,8 @@ class SpringText extends React.Component{
   }
   componentWillUnmount(){
     window.cancelAnimationFrame(this.myReq)
+    //绑定到DOM、window上的事件需要自己手动销毁吗
+    notification.destroy()
   }
   createText =()=> {
     const _this = this
@@ -162,14 +164,14 @@ class SpringText extends React.Component{
     });
 
     if (FLEE) {
-      window.addEventListener("mousemove", function(event) {
+      canvas.addEventListener("mousemove", function(event) {
         MOUSE.x = event.clientX -offsetX;
         MOUSE.y = event.clientY -66;
       });
     }
 
     if (SCATTER) {
-      window.addEventListener("click", function(event) {
+        canvas.addEventListener("click", function(event) {
         MOUSE.x = event.clientX-offsetX;
         MOUSE.y = event.clientY -66 ;
         for (var i=0; i<POINTS.length; i++) {
