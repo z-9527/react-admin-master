@@ -8,9 +8,6 @@ class LoadingPage extends React.Component {
   componentWillMount(){
     NProgress.start()
   }
-  componentDidMount(){
-    NProgress.done()
-  }
   componentWillUnmount(){
     NProgress.done()
   }
