@@ -1,44 +1,44 @@
 import React from 'react'
 import { withRouter, Switch, Redirect } from 'react-router-dom'
-import AsyncComponent from '../../utils/AsyncComponent'
+import LoadableComponent from '../../utils/LoadableComponent'
 import PrivateRoute from '../PrivateRoute'
 
-const Home = AsyncComponent(() => import('../../routes/Home/index'))
+const Home = LoadableComponent(import('../../routes/Home/index'))
 
 //基本组件Demo
-const ButtonDemo = AsyncComponent(() => import('../../routes/General/ButtonDemo/index'))
-const IconDemo = AsyncComponent(() => import('../../routes/General/IconDemo/index'))
+const ButtonDemo = LoadableComponent(import('../../routes/General/ButtonDemo/index'))
+const IconDemo = LoadableComponent(import('../../routes/General/IconDemo/index'))
 
 //导航组件Demo
-const DropdownDemo = AsyncComponent(() => import('../../routes/Navigation/DropdownDemo/index'))
-const MenuDemo = AsyncComponent(() => import('../../routes/Navigation/MenuDemo/index'))
-const StepsDemo = AsyncComponent(() => import('../../routes/Navigation/StepsDemo/index'))
+const DropdownDemo = LoadableComponent(import('../../routes/Navigation/DropdownDemo/index'))
+const MenuDemo = LoadableComponent(import('../../routes/Navigation/MenuDemo/index'))
+const StepsDemo = LoadableComponent(import('../../routes/Navigation/StepsDemo/index'))
 
 //输入组件Demo
-const FormDemo1 = AsyncComponent(() => import('../../routes/Entry/FormDemo/FormDemo1'))
-const FormDemo2 = AsyncComponent(() => import('../../routes/Entry/FormDemo/FormDemo2'))
-const UploadDemo = AsyncComponent(() => import('../../routes/Entry/UploadDemo/index'))
+const FormDemo1 = LoadableComponent(import('../../routes/Entry/FormDemo/FormDemo1'))
+const FormDemo2 = LoadableComponent(import('../../routes/Entry/FormDemo/FormDemo2'))
+const UploadDemo = LoadableComponent(import('../../routes/Entry/UploadDemo/index'))
 
 //显示组件Demo
-const CarouselDemo = AsyncComponent(() => import('../../routes/Display/CarouselDemo/index'))
-const CollapseDemo = AsyncComponent(() => import('../../routes/Display/CollapseDemo/index'))
-const ListDemo = AsyncComponent(() => import('../../routes/Display/ListDemo/index'))
-const TableDemo = AsyncComponent(() => import('../../routes/Display/TableDemo/index'))
-const TabsDemo = AsyncComponent(() => import('../../routes/Display/TabsDemo/index'))
+const CarouselDemo = LoadableComponent(import('../../routes/Display/CarouselDemo/index'))
+const CollapseDemo = LoadableComponent(import('../../routes/Display/CollapseDemo/index'))
+const ListDemo = LoadableComponent(import('../../routes/Display/ListDemo/index'))
+const TableDemo = LoadableComponent(import('../../routes/Display/TableDemo/index'))
+const TabsDemo = LoadableComponent(import('../../routes/Display/TabsDemo/index'))
 
 //反馈组件Demo
-const SpinDemo = AsyncComponent(() => import('../../routes/Feedback/SpinDemo/index'))
-const ModalDemo = AsyncComponent(() => import('../../routes/Feedback/ModalDemo/index'))
-const NotificationDemo = AsyncComponent(() => import('../../routes/Feedback/NotificationDemo/index'))
+const SpinDemo = LoadableComponent(import('../../routes/Feedback/SpinDemo/index'))
+const ModalDemo = LoadableComponent(import('../../routes/Feedback/ModalDemo/index'))
+const NotificationDemo = LoadableComponent(import('../../routes/Feedback/NotificationDemo/index'))
 
 //其它
-const AnimationDemo = AsyncComponent(() => import('../../routes/Other/AnimationDemo/index'))
-const GalleryDemo = AsyncComponent(() => import('../../routes/Other/GalleryDemo/index'))
-const DraftDemo = AsyncComponent(() => import('../../routes/Other/DraftDemo/index'))
-const ChartDemo = AsyncComponent(() => import('../../routes/Other/ChartDemo/index'))
-const LoadingDemo = AsyncComponent(() => import('../../routes/Other/LoadingDemo/index'))
-const ErrorPage = AsyncComponent(() => import('../../routes/Other/ErrorPage/index'))
-const SpringText = AsyncComponent(() => import('../../routes/Other/SpringText/index'))
+const AnimationDemo = LoadableComponent(import('../../routes/Other/AnimationDemo/index'))
+const GalleryDemo = LoadableComponent(import('../../routes/Other/GalleryDemo/index'))
+const DraftDemo = LoadableComponent(import('../../routes/Other/DraftDemo/index'))
+const ChartDemo = LoadableComponent(import('../../routes/Other/ChartDemo/index'))
+const LoadingDemo = LoadableComponent(import('../../routes/Other/LoadingDemo/index'))
+const ErrorPage = LoadableComponent(import('../../routes/Other/ErrorPage/index'))
+const SpringText = LoadableComponent(import('../../routes/Other/SpringText/index'))
 
 //关于
 
