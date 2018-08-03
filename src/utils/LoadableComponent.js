@@ -23,7 +23,7 @@ class LoadingPage extends React.Component {
 
 const LoadableComponent = (component) => {
   return Loadable({
-    loader: () => component,
+    loader: component,
     loading: ()=><LoadingPage/>
   })
 }
