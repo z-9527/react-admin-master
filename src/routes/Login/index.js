@@ -360,7 +360,7 @@ class Login extends React.Component {
         resolve(url);
       };
       image.onerror = function() {
-        reject(new Error('Could not load image at ' + url));
+        console.log('图片载入错误')
       };
       image.src = url;
     });
