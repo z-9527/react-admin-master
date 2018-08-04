@@ -80,6 +80,11 @@ const menus = [
     ]
   },
   {
+    title:'网络请求',
+    icon:'cloud-o',
+    key:'/home/network'
+  },
+  {
     title: '关于',
     icon: 'info-circle-o',
     key: '/home/about'
