@@ -41,6 +41,7 @@ const ErrorPage = LoadableComponent(()=>import('../../routes/Other/ErrorPage/ind
 const SpringText = LoadableComponent(()=>import('../../routes/Other/SpringText/index'))
 
 //关于
+const About = LoadableComponent(()=>import('../../routes/About/index'))
 
 @withRouter
 class ContentMain extends React.Component {
@@ -78,6 +79,8 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/home/other/loading' component={LoadingDemo}/>
           <PrivateRoute exact path='/home/other/404' component={ErrorPage}/>
           <PrivateRoute exact path='/home/other/springText' component={SpringText}/>
+
+          <PrivateRoute exact path='/home/about' component={About}/>
 
           <Redirect exact from='/' to='/home'/>
         </Switch>
