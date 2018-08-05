@@ -24,11 +24,11 @@ github地址：[基于React+antd实现后台模板](https://github.com/zhangZhiH
 ### 项目目录结构
 
 <img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/111.png?raw=true"/>
-assets----存储静态图片资源和共用icon图标
-components----存储共用组件
-routes----业务页面入口和常用模板
-store----状态管理
-utils----工具函数
+assets----存储静态图片资源和共用icon图标<br/>
+components----存储共用组件<br/>
+routes----业务页面入口和常用模板<br/> 
+store----状态管理<br/>
+utils----工具函数<br/>
 <br/>
 
 ### 项目截图
