@@ -2,7 +2,7 @@ import React from 'react'
 import CustomBreadcrumb from '../../../components/CustomBreadcrumb/index'
 import TypingCard from '../../../components/TypingCard'
 import { Card, Row, Col,BackTop } from 'antd'
-import { Chart, Axis, Geom, Tooltip, Coord, Label, Legend, G2 } from 'BizCharts'
+import { Chart, Axis, Geom, Tooltip, Coord, Label, Legend, G2 } from 'bizcharts'
 import { View } from '@antv/data-set'
 
 const data = [
