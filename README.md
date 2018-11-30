@@ -48,4 +48,14 @@ utils----工具函数<br/>
 
 ### 最后
 demo是我断断续续写的，只有下班和周末有时间。写demo的目的主要是熟悉React和react-router以及antd，整个demo中参考了一些其他人的想法，如动画效果等。另外基于vue的个人项目可以看这个[仿制移动端QQ音乐](https://blog.csdn.net/qq_37860930/article/details/80586698)
+<br/>
 
+### 其他个人项目
+
+- [基于vue+vue-router+jsonp+vuex仿制的移动端`QQ音乐`](https://github.com/zhangZhiHao1996/vue-music-master)
+- [基于React-Antd的`后台模板Demo`](https://github.com/zhangZhiHao1996/react-admin-master)
+- [基于原生小程序精仿的`猫眼电影小程序`](https://github.com/zhangZhiHao1996/weapp-movie-master)
+
+<br/>
+
+`觉得不错的给个star鼓励支持！^_^`
