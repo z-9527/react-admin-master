@@ -70,6 +70,17 @@ class LoginForm extends React.Component {
     })
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        // 表单登录时没有，需要手动验证，线上的没有修复
+        if(this.state.code.toUpperCase() !== values.verification.toUpperCase()){
+          this.props.form.setFields({
+              verification: {
+                  value: values.verification,
+                  errors: [new Error('验证码错误')]
+              }
+          })
+          return
+        }
+
         const users = this.props.appStore.users
         // 检测用户名是否存在
         const result = users.find(item => item.username === values.username)
