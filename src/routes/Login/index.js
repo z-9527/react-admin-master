@@ -70,7 +70,7 @@ class LoginForm extends React.Component {
     })
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // 表单登录时没有，需要手动验证，线上的没有修复
+        // 表单登录时，若验证码长度小于4则不会验证，所以我们这里要手动验证一次，线上的未修复
         if(this.state.code.toUpperCase() !== values.verification.toUpperCase()){
           this.props.form.setFields({
               verification: {
