@@ -43,7 +43,8 @@ utils----工具函数<br/>
 
 整个demo不复杂，主要是熟悉react和路由等，在打包的过程中出现了一点小问题。我打包的文件是放在服务器二级目录下，所以打包的路径要改为相对路径，不能使用绝对路径，我在package.json中添加了homepage:'.'解决了路径问题。然后BrowserRouter加上了 basename=‘二级目录名称’ 属性，结果还是出现js路径错误，我一直以为是webpack打包的问题，找了很久才发现是因为BrowserRouter，将BrowserRouter改为HashRouter就访问正确。  
 使用react-router（v4）时，如果有服务器端的动态支持，建议使用 BrowserRouter，否则建议使用 HashRouter。  
-关于BrowserRouter和HashRouter的区别，可以参考：[关于 reactrouter 4.0版本中 BrowserRouter和HashRouter的问题](https://cnodejs.org/topic/5a193c5d6190c8912ebacd5d)、[react-router v4中 HashRouter 和 BrowserRouter的使用](https://www.cnblogs.com/sunLemon/p/9020153.html)
+BrowserRouter和HashRouter其实就是前端路由的两种实现方式，一种是hash和一种是HTML5的history，网上有很介绍。  
+可以参考：[关于react 在打包后：“找不到资源路径”的问题、部署到服务器二级目录 “打开为空白” 的问题](https://blog.csdn.net/Sophie_U/article/details/80006723)
 <br/>
 
 ### 最后
