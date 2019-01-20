@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@antv/data-set": "^0.8.9",
+    "@babel/polyfill": "^7.2.5",
     "animate.css": "^3.6.1",
     "antd": "^3.6.2",
     "autoprefixer": "7.1.6",
