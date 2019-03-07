@@ -326,6 +326,11 @@ class Login extends React.Component {
   }
 
   componentDidMount () {
+    const isLogin = this.props.appStore
+    if(isLogin){
+      this.props.history.go(1)     //当浏览器用后退按钮回到登录页时，判断登录页是否登录，是登录就重定向上个页面
+      // this.props.appStore.toggleLogin(false) //也可以设置退出登录
+    }
     this.initPage()
     preloadingImages(imgs)  //预加载下一个页面的图片，预加载了第二次为什么还会去请求图片资源？
   }
