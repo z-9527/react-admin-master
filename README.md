@@ -5,6 +5,12 @@ github地址：[基于React+antd实现后台模板](https://github.com/zhangZhiH
 预览地址：[预览地址](https://zhangzhihao1996.github.io/react-admin-master/)
 <br/>
 
+2019.3.7更新    
+登录后浏览器后退按钮可以回到登录页，登录页不登录，通过浏览器的前进又可直接进入前台。
+我在登录页componentWillMount生命周期加了判断，如果已经登录，重定向到前页面（也可以设置退出登录）
+<br/>
+
+
 ### 技术栈
 
  - react
