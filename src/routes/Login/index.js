@@ -336,7 +336,7 @@ class Login extends React.Component {
   }
 
   componentWillUnmount () {
-    this.particle.destory()
+    this.particle && this.particle.destory()
     notification.destroy()
   }
   //载入页面时的一些处理
