@@ -5,7 +5,7 @@ github地址：[基于React+antd实现后台模板](https://github.com/zhangZhiH
 预览地址：[预览地址](https://zhangzhihao1996.github.io/react-admin-master/)
 <br/>
 
-项目重构地址：[github地址](https://github.com/zhangZhiHao1996/admin)  
+项目重构地址：[react+koa实现登陆、聊天、留言板功能后台](https://github.com/zhangZhiHao1996/admin)  
 重构预览地址：[重构预览地址](http://47.99.130.140/admin/)
 
 2019.3.19更新   
