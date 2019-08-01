@@ -5,6 +5,9 @@ github地址：[基于React+antd实现后台模板](https://github.com/zhangZhiH
 预览地址：[预览地址](https://zhangzhihao1996.github.io/react-admin-master/)
 <br/>
 
+项目重构地址：[github地址](https://github.com/zhangZhiHao1996/admin)  
+重构预览地址：[重构预览地址](http://47.99.130.140/admin/)
+
 2019.3.19更新   
 今天回顾了一下项目，发现组件写的有问题，公共组件中不应该写业务逻辑，业务逻辑应该通过props或传递事件来实现；或者再用容器组件封装。  
 webstorm打开项目时占用内存过高，不知道是不是代码的问题。  
