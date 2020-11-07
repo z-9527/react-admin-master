@@ -2,7 +2,7 @@
 自己利用业余时间，基于React+antd写了一个后台管理模板。主要是熟悉antd组件和React，页面主要还是展示页面,比较简单不涉及后台交互。
 
 github地址：[基于React+antd实现后台模板](https://github.com/z-9527/react-admin-master)  
-预览地址：[预览地址](https://z-9527.github.io/react-admin-master/)
+预览地址：[预览地址](http://47.99.130.140/project/admin)
 <br/>
 
 项目重构地址：[react+koa实现登陆、聊天、留言板功能后台](https://github.com/z-9527/admin)  
