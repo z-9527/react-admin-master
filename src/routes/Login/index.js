@@ -10,14 +10,13 @@ import 'animate.css'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 
-const url = 'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg1.jpg?raw=true'
+const url = 'http://47.99.130.140/imgs/wallhaven-g83v2e.jpg'
 const imgs = [
-  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide1.jpg?raw=true',
-  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide2.jpg?raw=true',
-  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide3.jpg?raw=true',
-  'https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/slide4.jpg?raw=true'
+  'http://47.99.130.140/imgs/wallhaven-p8r1e9.jpg',
+  'http://47.99.130.140/imgs/wallhaven-e7zyy8.jpg',
+  'http://47.99.130.140/imgs/wallhaven-6k9e7q.jpg',
+  'http://47.99.130.140/imgs/photo.jpg',
 ]
-
 
 
 
@@ -122,9 +121,8 @@ const styles = {
     left: '0',
     width: '100vw',
     height: '100vh',
-    // backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg5.jpg?raw=true)',
-    backgroundImage: 'url(https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/bg1.jpg?raw=true)',
-    backgroundSize: '100% 100%',
+    backgroundImage: `url(${url})`,
+    backgroundSize: 'cover',
     transition:'all .5s'
   },
   focus: {
